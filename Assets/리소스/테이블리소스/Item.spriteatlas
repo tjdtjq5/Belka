@@ -1,0 +1,150 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Item
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 2b50580fca7c83548bca81790731d4c3, type: 3}
+    totalSpriteSurfaceArea: 775845
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5a29ed006dcaa804b8af9177074cabd1, type: 3}
+  - {fileID: 21300000, guid: 88e9a7b0fedc9da4fa408faf50be7641, type: 3}
+  - {fileID: 21300000, guid: c5cf7fd0b4034124298acd8dfae24bed, type: 3}
+  - {fileID: 21300000, guid: cfdf1721b684ce545a2c9e3a11381a26, type: 3}
+  - {fileID: 21300000, guid: 08030ec172de4bf49aa1b067fa2a565f, type: 3}
+  - {fileID: 21300000, guid: 8cd7b0d15229c5244b8d7fbca5b453a4, type: 3}
+  - {fileID: 21300000, guid: e0b34bf194f493e40921a63138e8fde1, type: 3}
+  - {fileID: 21300000, guid: 4f81d5b20146f9e438acf22024bfc213, type: 3}
+  - {fileID: 21300000, guid: 802c5fb266c56b44aa3fa2db208a665b, type: 3}
+  - {fileID: 21300000, guid: bef3e5f25c188134e85664ea46e5b90f, type: 3}
+  - {fileID: 21300000, guid: 357ce973402ef234783c5ffc076a0ffb, type: 3}
+  - {fileID: 21300000, guid: 017160831e8c1dd478f3e928ea63a8f6, type: 3}
+  - {fileID: 21300000, guid: ada3cc24e82c4474fac1e0bb1ffb09c7, type: 3}
+  - {fileID: 21300000, guid: e087d454bfa6f434889dd44c81d4efd1, type: 3}
+  - {fileID: 21300000, guid: 91fa1984624bff84a9b6f1df5b8fa61c, type: 3}
+  - {fileID: 21300000, guid: 7ab776c432fc1a240af566dcac1434f8, type: 3}
+  - {fileID: 21300000, guid: 544455f4658118e4e932fe1800dadaac, type: 3}
+  - {fileID: 21300000, guid: c0fe1115b915eeb45a47b743d64beb28, type: 3}
+  - {fileID: 21300000, guid: 2bd9861599f3ce342a33b2e980eb83b0, type: 3}
+  - {fileID: 21300000, guid: fea9d235193dd0944bb363165a960122, type: 3}
+  - {fileID: 21300000, guid: d8a623654806adb49b7962806b52edfb, type: 3}
+  - {fileID: 21300000, guid: 1f6e3b954fe89cb46bbca2d8e20bd505, type: 3}
+  - {fileID: 21300000, guid: abe41da5ce2071844b81429ef9ca2e81, type: 3}
+  - {fileID: 21300000, guid: d316f4e534603ee42a2997d9ce674e2f, type: 3}
+  - {fileID: 21300000, guid: d09f45163f3800b4a81e102ac5e38997, type: 3}
+  - {fileID: 21300000, guid: 60fe7516f22f40649ac6e42427ce6406, type: 3}
+  - {fileID: 21300000, guid: ba5cbd269c225ec4db61c999869fc123, type: 3}
+  - {fileID: 21300000, guid: 3068a9863de03584f86c589d7f417bb8, type: 3}
+  - {fileID: 21300000, guid: 93b1e7e773b87dc429db75fcc220631a, type: 3}
+  - {fileID: 21300000, guid: 2b52ffe7ee9793340b017e992b8ce86b, type: 3}
+  - {fileID: 21300000, guid: 7512bd2859c56f34f8c3ecaaecf58aba, type: 3}
+  - {fileID: 21300000, guid: 301b5dd8d412302498db5f05179db27e, type: 3}
+  - {fileID: 21300000, guid: a6419ef8d51944a4985afce80445a1a6, type: 3}
+  - {fileID: 21300000, guid: 7352b809becc19c4caecf3ea780d1eb0, type: 3}
+  - {fileID: 21300000, guid: 90e2b429983c398409a3f8d84aecd74b, type: 3}
+  - {fileID: 21300000, guid: bf2a91499df780c44b0fdb61ab07b0c0, type: 3}
+  - {fileID: 21300000, guid: 0de2de49c181c8240841a468b5093d72, type: 3}
+  - {fileID: 21300000, guid: 2d9b1069fecdef841b69cf97dd416b85, type: 3}
+  - {fileID: 21300000, guid: 89ee1b892461b3a49bb8730e17adeee0, type: 3}
+  - {fileID: 21300000, guid: 001a12f9eae8da14ea72266d782e4dfb, type: 3}
+  - {fileID: 21300000, guid: fc5b9e5a5b4dccf4d941126206eb310b, type: 3}
+  - {fileID: 21300000, guid: dee10bca5208dac418142e263bc52671, type: 3}
+  - {fileID: 21300000, guid: d5f54e2b91fb6fe48a0b42fcc5266de7, type: 3}
+  - {fileID: 21300000, guid: 0834335b7061cbc4b9114c1faea392b1, type: 3}
+  - {fileID: 21300000, guid: ad0ed27b68ddd224e8861f06f7d2fb2f, type: 3}
+  - {fileID: 21300000, guid: 8a7f1e0c4ef173540ad05f1e4b8160d2, type: 3}
+  - {fileID: 21300000, guid: 6a89418ceccb9c946aad7733b8754ceb, type: 3}
+  - {fileID: 21300000, guid: 356f420da7fb7db4296a5ae9102ec476, type: 3}
+  - {fileID: 21300000, guid: e5a62f3d7f3435d43b23ca5c3c04c398, type: 3}
+  - {fileID: 21300000, guid: 051eda4d3137bb944b9ef43461ff89d5, type: 3}
+  - {fileID: 21300000, guid: bdb4f90ee4a509646978f85bc9d931bc, type: 3}
+  - {fileID: 21300000, guid: 0329f92e6383e3446889aea5290c5366, type: 3}
+  - {fileID: 21300000, guid: 8ef81b2e280b61548b6c560e2997f2e9, type: 3}
+  - {fileID: 21300000, guid: 86ba30ce3facef14097e873cd56502e9, type: 3}
+  - {fileID: 21300000, guid: 55c28dff4d39d484793ad5d16ec7bd1b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - HB_Upgrade_4_Image
+  - AR_UpgradePiece_1_Image
+  - MJ_UpgradePiece_3_Image
+  - MJ_Upgrade_2_Image
+  - AR_Upgrade_1_Image
+  - AR_Upgrade_3_Image
+  - AR_UpgradePiece_2_Image
+  - JH_UpgradePiece_3_Image
+  - BN_Upgrade_5_Image
+  - JH_UpgradePiece_4_Image
+  - MJ_UpgradePiece_2_Image
+  - GachaBox_Prime_Image
+  - MJ_Upgrade_1_Image
+  - MJ_UpgradePiece_1_Image
+  - BN_Upgrade_4_Image
+  - AR_Upgrade_4_Image
+  - JH_UpgradePiece_2_Image
+  - GachaBox_Bronze_Image
+  - JH_UpgradePiece_1_Image
+  - BN_UpgradePiece_3_Image
+  - JH_UpgradePiece_5_Image
+  - JH_Upgrade_5_Image
+  - HB_UpgradePiece_5_Image
+  - HB_UpgradePiece_1_Image
+  - MJ_UpgradePiece_4_Image
+  - HB_Upgrade_3_Image
+  - MJ_Upgrade_4_Image
+  - BN_UpgradePiece_1_Image
+  - HB_Upgrade_2_Image
+  - MJ_Upgrade_5_Image
+  - JH_Upgrade_1_Image
+  - HB_UpgradePiece_3_Image
+  - JH_Upgrade_2_Image
+  - HB_UpgradePiece_4_Image
+  - GachaBox_Silver_Image
+  - BN_UpgradePiece_2_Image
+  - GachaBox_Gold_Image
+  - JH_Upgrade_3_Image
+  - BN_Upgrade_1_Image
+  - BN_Upgrade_3_Image
+  - MJ_Upgrade_3_Image
+  - HB_Upgrade_1_Image
+  - MJ_UpgradePiece_5_Image
+  - AR_UpgradePiece_3_Image
+  - AR_Upgrade_5_Image
+  - AR_Upgrade_2_Image
+  - AR_UpgradePiece_4_Image
+  - GachaBox_Stage_Image
+  - BN_UpgradePiece_4_Image
+  - BN_UpgradePiece_5_Image
+  - HB_Upgrade_5_Image
+  - HB_UpgradePiece_2_Image
+  - JH_Upgrade_4_Image
+  - AR_UpgradePiece_5_Image
+  - BN_Upgrade_2_Image
+  m_Tag: Item
+  m_IsVariant: 0

@@ -1,0 +1,72 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shop
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: ca14033820f46334793a1450aabd1217, type: 3}
+    totalSpriteSurfaceArea: 807205
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 956ecaa0fa833f540b557eebca341595, type: 3}
+  - {fileID: 21300000, guid: ea2ce7b0e1605ca41925843e2787a7a3, type: 3}
+  - {fileID: 21300000, guid: a296444144d99f34b92cebae7c259a91, type: 3}
+  - {fileID: 21300000, guid: 18bbe871359da7040a619791962e57a5, type: 3}
+  - {fileID: 21300000, guid: 3b5f2fc1971923e4cacd5cd4e5197b08, type: 3}
+  - {fileID: 21300000, guid: 5f6f3a437ba514e4d9a56ce2f2ae93f9, type: 3}
+  - {fileID: 21300000, guid: 2684c8b35389c604799b3333c9643d06, type: 3}
+  - {fileID: 21300000, guid: c41e6cb3a363e2f4dbe85edbd89321dc, type: 3}
+  - {fileID: 21300000, guid: 342bd23458406cd429e17a096f08eee4, type: 3}
+  - {fileID: 21300000, guid: 9927ae34343fc5a4498b297edcb64a92, type: 3}
+  - {fileID: 21300000, guid: 83373e54f9555d04dadce4fd6420eb91, type: 3}
+  - {fileID: 21300000, guid: facd922ad468087489311fdf5006501f, type: 3}
+  - {fileID: 21300000, guid: 695b289a405c057408cef21296111e5a, type: 3}
+  - {fileID: 21300000, guid: 1a8d112f544566e4c848958a7b3012cb, type: 3}
+  - {fileID: 21300000, guid: 4cfef26f20fb79a45b376abb82b0eac5, type: 3}
+  - {fileID: 21300000, guid: 9559b4cf4996c3b4a92567bc8872a855, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Shop_Heart_1
+  - Shop_Heart_100
+  - Shop_Cacha_Prime
+  - Shop_Cacha_Bronze
+  - Shop_Heart_10
+  - Shop_Dia_300
+  - Shop_Dia_13500
+  - Shop_Dia_30000
+  - Shop_Dia_1350
+  - Shop_Ads
+  - Shop_Cacha_Silver
+  - Shop_Dia_4500
+  - Shop_Cacha_Gold
+  - Shop_Dia_100
+  - Shop_Heart_50
+  - Shop_Heart_5
+  m_Tag: Shop
+  m_IsVariant: 0

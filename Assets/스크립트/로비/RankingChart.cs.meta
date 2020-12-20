@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 06faf08d6b3bcbf4b9753c818d25fcab
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rankingSpriteAtlas: {fileID: 4343727234628468602, guid: 328d2fcd823d2004a9dc3369de98b033,
+      type: 2}
+  - rankingGuideSpriteAtlas: {fileID: 4343727234628468602, guid: d15c560886797cb41ade6b105910a9a1,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

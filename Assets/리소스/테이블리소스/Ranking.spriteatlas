@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Ranking
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: e92e04f0be405974ca7c192285081d6c, type: 3}
+    totalSpriteSurfaceArea: 4481625
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: e9e292e08549a7348900968634dad362, type: 3}
+  - {fileID: 21300000, guid: eb86a6f0202a4084c989ba56511706d8, type: 3}
+  - {fileID: 21300000, guid: a7f066826262acb4e98df712bd3ac2b7, type: 3}
+  - {fileID: 21300000, guid: ffef1603b5fc9744ea30e3976303c168, type: 3}
+  - {fileID: 21300000, guid: 1d268f13f3af068438570c8a0ee5586b, type: 3}
+  - {fileID: 21300000, guid: 1b937c23f4dbce142a4751b700642e41, type: 3}
+  - {fileID: 21300000, guid: 2a5c8ec5170d2e24ab49f16f334f1921, type: 3}
+  - {fileID: 21300000, guid: 3885c618ef92152459552a2b6e6b5422, type: 3}
+  - {fileID: 21300000, guid: 4ce5b948adf223f47b20e05fc1bd6d85, type: 3}
+  - {fileID: 21300000, guid: bbbfdaea17b0e8d4093831458c2e5023, type: 3}
+  - {fileID: 21300000, guid: 16a5ca5d2d23f274a89d06018cc1d98f, type: 3}
+  - {fileID: 21300000, guid: f2ba058d2fade954a9d2e2a7f7fd86cc, type: 3}
+  - {fileID: 21300000, guid: c578d8adbf0488a4b93595b967ed3401, type: 3}
+  - {fileID: 21300000, guid: 7c703cde468cda649b83a7a0009c3e6b, type: 3}
+  - {fileID: 21300000, guid: 87a1f4cf91746a144bb4e16b422c5571, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Contest_5_Image
+  - Contest_4_Image
+  - Contest_9_Image
+  - Contest_2_Image
+  - Contest_15_Image
+  - Contest_6_Image
+  - Contest_7_Image
+  - Contest_13_Image
+  - Contest_11_Image
+  - Contest_8_Image
+  - Contest_3_Image
+  - Contest_10_Image
+  - Contest_14_Image
+  - Contest_1_Image
+  - Contest_12_Image
+  m_Tag: Ranking
+  m_IsVariant: 0

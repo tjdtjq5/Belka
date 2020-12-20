@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: CharacterUpgradeImage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: b466db8745938284d88a0b39fedb35b0, type: 3}
+    totalSpriteSurfaceArea: 427500
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: f7a8ddb42c38b9041a37b76c39980fbb, type: 3}
+  - {fileID: 21300000, guid: d9b79a054d672a240b82de999f7ddff5, type: 3}
+  - {fileID: 21300000, guid: 81e6b9c867a034a45911e3664ecf8807, type: 3}
+  - {fileID: 21300000, guid: e40b9c594fcf8c84d8bfeadb73a47db5, type: 3}
+  - {fileID: 21300000, guid: 9917abeaf9968c547930b562f079355d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - BN_Normal
+  - AR_Normal
+  - JH_Normal
+  - MJ_Normal
+  - HB_Nomal
+  m_Tag: CharacterUpgradeImage
+  m_IsVariant: 0

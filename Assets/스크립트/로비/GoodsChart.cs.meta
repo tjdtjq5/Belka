@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 225e022dc134d7f41bb92659424eca94
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - goodsSpriteAtlas: {fileID: 4343727234628468602, guid: 7bb97e37dafa3b94d95ff432de5621ac,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

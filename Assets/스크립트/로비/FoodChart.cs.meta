@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: cb3178f514a4dcd4089b9aecebd0a95c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - foodSpriteAtlas: {fileID: 4343727234628468602, guid: e919940370760024e868902a7d160daa,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

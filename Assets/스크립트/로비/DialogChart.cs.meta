@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: dafa1ef4f6479f24baff491e15c8a26b
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - BGSpriteAtlas: {fileID: 4343727234628468602, guid: be0c6500da6ae56418f0c47a272f51ee,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

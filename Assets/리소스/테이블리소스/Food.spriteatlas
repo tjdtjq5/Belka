@@ -1,0 +1,152 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Food
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f9632022f82a86f4fa724f4ac80a6ec4, type: 3}
+    totalSpriteSurfaceArea: 740275
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: be1bc7603b5b85b40aae64a15025fb2d, type: 3}
+  - {fileID: 21300000, guid: 29904280301dc254d864e919e0f7d3a9, type: 3}
+  - {fileID: 21300000, guid: e83b288052e8b9a4d88151d058ce81d8, type: 3}
+  - {fileID: 21300000, guid: 27c1b3a0826e892409f21c3c6427ba4e, type: 3}
+  - {fileID: 21300000, guid: fa5b81b0bc00bd84e8a149e562c0cba7, type: 3}
+  - {fileID: 21300000, guid: 45f512c0f41dc26438f0b352c9b38f2d, type: 3}
+  - {fileID: 21300000, guid: c0c973f0e1572204382a59ced8f4a409, type: 3}
+  - {fileID: 21300000, guid: 4a6dec41eae41864693a7287a38cfce1, type: 3}
+  - {fileID: 21300000, guid: 570cb17184f140342bfabf0c33c7811e, type: 3}
+  - {fileID: 21300000, guid: e9ee5f42e91cb7849b333ba13d8df8ea, type: 3}
+  - {fileID: 21300000, guid: dd84a862565c98c439fcdb15ad73c6af, type: 3}
+  - {fileID: 21300000, guid: 373d2b629b1b6ff4e8fe1f289f93d282, type: 3}
+  - {fileID: 21300000, guid: f71b5d8264ce3a84d8a9c8cffc9d31f6, type: 3}
+  - {fileID: 21300000, guid: 5241b6438b80bcf4cbc962c54d949466, type: 3}
+  - {fileID: 21300000, guid: c420fa4354a53414d99034c9ccd8b503, type: 3}
+  - {fileID: 21300000, guid: fbf60a734a346e24dae808c75858f821, type: 3}
+  - {fileID: 21300000, guid: d59f02a3da8e87d4c9efbf6039794543, type: 3}
+  - {fileID: 21300000, guid: 564149f347a409a4b994bffe97c80df8, type: 3}
+  - {fileID: 21300000, guid: 4fafbbf33106213469ed7b4659338770, type: 3}
+  - {fileID: 21300000, guid: 80d09804151da7440aeb4ccd678a9d67, type: 3}
+  - {fileID: 21300000, guid: 38ae691492728d6428068868aa80c3a6, type: 3}
+  - {fileID: 21300000, guid: 785c1d14c0552a648ad6c7e6476449fc, type: 3}
+  - {fileID: 21300000, guid: db1e2544847388a41b364c41d4bebe48, type: 3}
+  - {fileID: 21300000, guid: 688be9a44153ce848aecc199056c77ef, type: 3}
+  - {fileID: 21300000, guid: 3bb33325678ceff4e844bb2aeebec9ee, type: 3}
+  - {fileID: 21300000, guid: 264b9d2597a3182478b4d8bbc0575ca3, type: 3}
+  - {fileID: 21300000, guid: 8004584584713e34bbfe658d3865ecf8, type: 3}
+  - {fileID: 21300000, guid: 592c37f53c5b76947a1d7ad62ee535d8, type: 3}
+  - {fileID: 21300000, guid: fcb360366ddbdf0469daa750ec3c2430, type: 3}
+  - {fileID: 21300000, guid: 9528c25668005964288e375ba015ef19, type: 3}
+  - {fileID: 21300000, guid: e5c18c66935661241bd846d5929f5483, type: 3}
+  - {fileID: 21300000, guid: b6b6f976c2fd8524995fd42ffeab7bfb, type: 3}
+  - {fileID: 21300000, guid: 1b95b2173fd51c4438611afebfc594a5, type: 3}
+  - {fileID: 21300000, guid: 75e30c67846fb984ea4d9841fee52ad2, type: 3}
+  - {fileID: 21300000, guid: f1e2a1a7bd7346b42827a4f8b42048aa, type: 3}
+  - {fileID: 21300000, guid: 33cc58b7079c2a842bcc79b918b0af69, type: 3}
+  - {fileID: 21300000, guid: cd9836f7bb0414a4b9c4d5e1e06c4bbe, type: 3}
+  - {fileID: 21300000, guid: 8dcba688daaecc7438f2a937b482319a, type: 3}
+  - {fileID: 21300000, guid: f87cc049601b44a44a15f4961ecb7f7f, type: 3}
+  - {fileID: 21300000, guid: c82de559e01b44d49b79cf3f9f38db02, type: 3}
+  - {fileID: 21300000, guid: 7a685ad937539404c8e0d8a85954a89c, type: 3}
+  - {fileID: 21300000, guid: d089f10a79d3e0842867077f07e3ff60, type: 3}
+  - {fileID: 21300000, guid: 9598ff6a1f6362f4bb56352f87dc3c1e, type: 3}
+  - {fileID: 21300000, guid: 821fceaaa16aae346be6b30041fa5b5f, type: 3}
+  - {fileID: 21300000, guid: 52b372ca7db0ad042a02faeb0dd37e90, type: 3}
+  - {fileID: 21300000, guid: 081e60da5933d8548acd90044bf77a50, type: 3}
+  - {fileID: 21300000, guid: f696b40be156f0b4a89e9c064039ea7f, type: 3}
+  - {fileID: 21300000, guid: e63b261bb67eff64a95d93513cf28eaf, type: 3}
+  - {fileID: 21300000, guid: 52ab487bf1b2ad24b825d5346f363531, type: 3}
+  - {fileID: 21300000, guid: 86b978ab1dfaf98449d83ff1434827e2, type: 3}
+  - {fileID: 21300000, guid: f2ec861eca5fb1447a798e425d65bbba, type: 3}
+  - {fileID: 21300000, guid: 00bf771e3ca7d3d499870bf044be1ac3, type: 3}
+  - {fileID: 21300000, guid: fb8b9a6ed7009df49b88c44287e8fd0c, type: 3}
+  - {fileID: 21300000, guid: 4913787e93f501e4f97a448cc6aafd09, type: 3}
+  - {fileID: 21300000, guid: aa85239e573f62f41ab9c71ecad7e961, type: 3}
+  - {fileID: 21300000, guid: b19729feb82084b4dae3f71fa1b65453, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - MF_Walnut_Powder
+  - MF_Mirepoix_Paste_StirFry
+  - MF_Beef_Marinade
+  - MF_CubeApple_Sugar
+  - MF_FriedPotato
+  - FF_Celery
+  - FF_Salt
+  - FF_Mayonnaise
+  - FF_Butter
+  - LF_Omelet
+  - FF_SaltPepper
+  - FF_Lettuce
+  - LF_SirloinSteak
+  - FF_Bouquetgarni
+  - MF_BeatenEggs
+  - FF_Beef
+  - LF_WaldorfSalad
+  - MF_Meringue
+  - LF_BLTsandwich
+  - FF_Lemon_Cut
+  - FF_WhippedCream
+  - FF_Bread
+  - MF_WalnutCelery
+  - FF_OliveOil
+  - FF_Egg
+  - FF_Tomato_Slice
+  - MF_BakedBread
+  - FF_TomatoPaste
+  - MF_RoastOnion_Pot
+  - MF_Potato_Mashed
+  - FF_Tomato_Cut
+  - LF_TomatoSauce
+  - MF_Spinach_StirFry
+  - FF_Water
+  - FF_CarrotCelery
+  - MF_Celery_Cube
+  - FF_Sugar
+  - MF_Apple_Cube
+  - FF_Apple
+  - FF_MayonaiseLemon_Cut
+  - FF_Carrot
+  - MF_Walnut_Quarter
+  - FF_Bacon
+  - FF_Spinach
+  - MF_Potato_Peeled
+  - MF_Sandwich_Mid
+  - FF_Pepper
+  - FF_Walnut
+  - MF_Potato_Boiled
+  - FF_Beef_Mince
+  - LF_MashPotato
+  - FF_Potato
+  - MF_Vegetable_PieceCut
+  - MF_Mirepoix
+  - FF_Onion
+  - LF_BeefConsomme
+  m_Tag: Food
+  m_IsVariant: 0

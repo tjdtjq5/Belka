@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: a202304c0978df34d855e3da3ab17aee
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - stageSpriteAtlas: {fileID: 4343727234628468602, guid: 7e80c47f96231b143b5dd2fa06e0cb30,
+      type: 2}
+  - stageGuideSpriteAtlas: {fileID: 4343727234628468602, guid: a55acfefdc8345d479b0de064a75d8fb,
+      type: 2}
+  - stageCharacterIconSpriteAtlas: {fileID: 4343727234628468602, guid: 538351cd07b6bd94a8d3f2d13eb09abe,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

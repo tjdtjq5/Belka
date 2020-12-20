@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StageGuide
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4dcc9535a50b49f48bf7e509a2d1ee8c, type: 3}
+    totalSpriteSurfaceArea: 321000
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: dd491be08acb47241aa064d4fb4b1788, type: 3}
+  - {fileID: 21300000, guid: f8fbabe054cf66b4baf2ecfec9c7b481, type: 3}
+  - {fileID: 21300000, guid: 7d4174117f51a7847806fa6e62adce7b, type: 3}
+  - {fileID: 21300000, guid: 6ea02252292520e46b48124af4839099, type: 3}
+  - {fileID: 21300000, guid: c0ab9d72c4220b24e98e564513049804, type: 3}
+  - {fileID: 21300000, guid: 5c11612425ac8184396bcc3d4849e65c, type: 3}
+  - {fileID: 21300000, guid: 14eff784dafa02343ab2f240c7161115, type: 3}
+  - {fileID: 21300000, guid: 0031b767b615cd847bcdf7a00e94a144, type: 3}
+  - {fileID: 21300000, guid: 4483f0689f1fb9a438f0b08868dbdcdb, type: 3}
+  - {fileID: 21300000, guid: 40ff0278e4003fd4ebe0be57e27b23f5, type: 3}
+  - {fileID: 21300000, guid: 1521bb0af659aff49928d6a10bcdbfab, type: 3}
+  - {fileID: 21300000, guid: ceebf69a36012d74d85c752bae88d449, type: 3}
+  - {fileID: 21300000, guid: c543882b06080394aa64346564dd63d0, type: 3}
+  - {fileID: 21300000, guid: 418c77abc76aaf44a8ec5f2a9a663568, type: 3}
+  - {fileID: 21300000, guid: 13b8d27cd5981dc448144a48b1204055, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - S1_Guide
+  - S6_Guide
+  - S10_Guide
+  - S12_Guide
+  - S5_Guide
+  - S3_Guide
+  - S14_Guide
+  - S13_Guide
+  - S7_Guide
+  - S9_Guide
+  - S4_Guide
+  - S2_Guide
+  - S15_Guide
+  - S8_Guide
+  - S11_Guide
+  m_Tag: StageGuide
+  m_IsVariant: 0

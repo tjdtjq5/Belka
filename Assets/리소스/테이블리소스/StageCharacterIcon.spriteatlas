@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: StageCharacterIcon
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: f8a43dc57bdc12e4584151d39b536362, type: 3}
+    totalSpriteSurfaceArea: 67369
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 3fb83f10a99ab6540a7c9f1915c6d83f, type: 3}
+  - {fileID: 21300000, guid: 983f0d3085c1dae4eaf8cbddd3a22b84, type: 3}
+  - {fileID: 21300000, guid: 0454e19a33762414f8af800d207110e9, type: 3}
+  - {fileID: 21300000, guid: 28481d5b9c84d9142bd4a71a48e9bb32, type: 3}
+  - {fileID: 21300000, guid: b9cce76e0c679a741b4ae0545b787dbf, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - AR_Icon
+  - BN_Icon
+  - MJ_Icon
+  - HB_Icon
+  - JH_Icon
+  m_Tag: StageCharacterIcon
+  m_IsVariant: 0

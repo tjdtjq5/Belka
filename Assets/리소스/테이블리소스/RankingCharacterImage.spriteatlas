@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: RankingCharacterImage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 112540e5050d7ff48a4ff23a7595d3ac, type: 3}
+    totalSpriteSurfaceArea: 1800000
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: d9436e603e76c8141908a604a2cc66d2, type: 3}
+  - {fileID: 21300000, guid: e1ffb6822056f8941a49e341e18c5a55, type: 3}
+  - {fileID: 21300000, guid: bb0847d87f301404082ad9ed670020b1, type: 3}
+  - {fileID: 21300000, guid: 1742b28b969620640b72f9871b53297f, type: 3}
+  - {fileID: 21300000, guid: 7fb3ccaca4452fb4b831213865a9465c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - BN_Normal
+  - AR_Normal
+  - JH_Normal
+  - MJ_Normal
+  - HB_Nomal
+  m_Tag: RankingCharacterImage
+  m_IsVariant: 0

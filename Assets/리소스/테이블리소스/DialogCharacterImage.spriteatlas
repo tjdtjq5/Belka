@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DialogCharacterImage
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 4a9cc4de3b110f44888aff476949f899, type: 3}
+    totalSpriteSurfaceArea: 4838400
+    bindAsDefault: 1
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 9c3975a2792645f4a80f530851468d3f, type: 3}
+  - {fileID: 21300000, guid: 2d9a3e1652e657b4ab27481db1422c3e, type: 3}
+  - {fileID: 21300000, guid: c70c669699512a143ae7a815ddb0ae67, type: 3}
+  - {fileID: 21300000, guid: 504659f65b19c394592e9fe1c0c398d9, type: 3}
+  - {fileID: 21300000, guid: 818df9f674da3984bbe85fe3fc7ea131, type: 3}
+  - {fileID: 21300000, guid: f1d861c7e9c30664a961f86754a25f71, type: 3}
+  - {fileID: 21300000, guid: 1c9645fa6f1340142a1af946421a4b1f, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Dialog_ADR_1
+  - Dialog_AR_1
+  - Dialog_JH_1
+  - Dialog_MJ_1
+  - Dialog_SH_1
+  - Dialog_HB_1
+  - Dialog_BN_1
+  m_Tag: DialogCharacterImage
+  m_IsVariant: 0
