@@ -76,6 +76,7 @@ public class CharacterManager : MonoBehaviour
     public void RightArrow()
     {
         if (Tutorial02Manager.instance.tutorialFlag) return;
+      
         int lengthCharacterType = System.Enum.GetValues(typeof(CharacterType)).Length;
         int nextCharacter = (int)currentCharacter + 1;
         if (nextCharacter >= lengthCharacterType)

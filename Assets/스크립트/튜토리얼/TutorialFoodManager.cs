@@ -9,6 +9,8 @@ public class TutorialFoodManager : MonoBehaviour
     public static TutorialFoodManager instance;
     private void Awake() { instance = this; }
 
+    public GameObject gravity;
+
     public Transform food;
     int foodId = 0;
     int numberOfFood = 0;
@@ -49,7 +51,15 @@ public class TutorialFoodManager : MonoBehaviour
         food.GetChild(count).GetComponent<Image>().color = Color.white;
         food.GetChild(count).rotation = Quaternion.Euler(0, 0, 0);
         food.GetChild(count).DOShakeRotation(4, 6, 5);
+
+        Vector3 particlePosition = new Vector3(food.GetChild(count).position.x, food.GetChild(count).position.y, 0);
+        GameObject particle = Instantiate(gravity, particlePosition, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
+
         count++;
+
+     
+
         TutorialManager.instance.NextStep();
         return true;
     }

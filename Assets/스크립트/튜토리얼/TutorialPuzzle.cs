@@ -86,7 +86,7 @@ public class TutorialPuzzle : MonoBehaviour
                     //음식넣기 성공
                     TutorialMaterialManager.instance.MaterialSet(childNumber);
 
-                    Vector2 hitPosition = theCam.WorldToScreenPoint(mousePosition);
+                    Vector2 hitPosition = theCam.WorldToScreenPoint(hit.transform.position);
                     tempPrepab.transform.GetChild(0).DOMove(new Vector2(hitPosition.x, hitPosition.y - 25), .8f).SetEase(Ease.InQuad);
                     tempPrepab.transform.GetChild(0).DOScale(.4f, .8f).OnComplete(() => { Destroy(tempPrepab); });
                     tempPrepab.transform.GetChild(0).GetComponent<Image>().DOFade(.4f, 0.8f).OnComplete(() => {

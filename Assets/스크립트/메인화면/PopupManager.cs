@@ -18,6 +18,10 @@ public class PopupManager : MonoBehaviour
     [SerializeField] GameObject pause;
     [SerializeField] GameObject timeOver;
     [SerializeField] GameObject setting;
+
+    [SerializeField] GameObject privacy;
+    [SerializeField] GameObject nicknameChange;
+
     [SerializeField] GameObject bag;
     [SerializeField] GameObject piece;
     [SerializeField] GameObject pieceAssosiation;
@@ -43,6 +47,7 @@ public class PopupManager : MonoBehaviour
     public GameObject tutorialSpeech;
 
     public AudioSource sucessAudioSource;
+    public GameObject firework;
     public void ShopPerchase(int shopId ,System.Action callback)
     {
         blackPannel.SetActive(true);
@@ -125,8 +130,10 @@ public class PopupManager : MonoBehaviour
         UserStageInfo userStageInfo = UserInfo.instance.GetUserStageInfo(stageId);
         float bestScoreTime = scoreTime;
         int userStarCount = 0;
+        bool isFirst = false;
         if (userStageInfo != null)
         {
+            isFirst = true;
             userStarCount = userStageInfo.starCount;
             if (userStageInfo.clearTime > scoreTime) bestScoreTime = userStageInfo.clearTime;
         }
@@ -176,16 +183,19 @@ public class PopupManager : MonoBehaviour
             result.transform.Find("Reward").GetChild(i).gameObject.SetActive(false);
         }
 
-        if (userStarCount > starCount) starCount = userStarCount;
-
         RewardType[] rewardTypes = StageChart.instance.GetStageChartInfo(stageId).StarRewardType;
         int[] rewardIds = StageChart.instance.GetStageChartInfo(stageId).RewardId;
         int[] rewardCount = StageChart.instance.GetStageChartInfo(stageId).RewardCount;
 
-        len = rewardTypes.Length;
+        len = userStarCount;
         if (len > result.transform.Find("Reward").childCount) len = result.transform.Find("Reward").childCount;
-        for (int i = starCount; i < len; i++)
+        for (int i = 0; i < len; i++)
         {
+            if (isFirst)
+            {
+                len = 0;
+                break;
+            }
             result.transform.Find("Reward").GetChild(i).gameObject.SetActive(true);
             switch (rewardTypes[i])
             {
@@ -214,6 +224,8 @@ public class PopupManager : MonoBehaviour
         RewardType[] clearRewardType = StageChart.instance.GetStageChartInfo(stageId).ClearRewardType;
         int[] clearRewardId = StageChart.instance.GetStageChartInfo(stageId).ClearRewardId;
         int[] clearRewardCount = StageChart.instance.GetStageChartInfo(stageId).ClearRewardCount;
+
+        Debug.Log(clearRewardId.Length);
 
         int len02 = len + clearRewardType.Length;
         if (len02 > result.transform.Find("Reward").childCount) len02 = result.transform.Find("Reward").childCount;
@@ -265,9 +277,6 @@ public class PopupManager : MonoBehaviour
             UserInfo.instance.SaveUserHeartInfo(() => {
                 UserInfo.instance.SaveUserItemInfo(() => {
                     UserInfo.instance.SaveUserStageInfo(() => {
-
-                  
-
                         if (stageId == 1)
                         {
                             BackendGameInfo.instance.GetPrivateContents("UserInfo", "Tutorial02", () => {
@@ -288,8 +297,6 @@ public class PopupManager : MonoBehaviour
                         blackPannel.SetActive(true);
                         result.SetActive(true);
                         SoundManager.instance.SfxPlay(result.GetComponent<AudioSource>());
-
-                   
                     });
                 });
             });
@@ -335,6 +342,25 @@ public class PopupManager : MonoBehaviour
             setting.SetActive(false);
         });
     }
+
+    public void Privacy()
+    {
+        privacy.SetActive(true);
+        privacy.transform.Find("Exit").GetComponent<Button>().onClick.RemoveAllListeners();
+        privacy.transform.Find("Exit").GetComponent<Button>().onClick.AddListener(() => {
+            privacy.SetActive(false);
+        });
+    }
+    public void NicknameChange()
+    {
+        nicknameChange.SetActive(true);
+        nicknameChange.transform.Find("Exit").GetComponent<Button>().onClick.RemoveAllListeners();
+        nicknameChange.transform.Find("Exit").GetComponent<Button>().onClick.AddListener(() => {
+            nicknameChange.SetActive(false);
+        });
+    }
+
+
     public void Bag()
     {
         if (Tutorial02Manager.instance.tutorialFlag)
@@ -365,19 +391,23 @@ public class PopupManager : MonoBehaviour
     }
     public void PieceAssosiation(int itemId)
     {
+        int beforeItemCount = UserInfo.instance.GetUserItemInfo(itemId).numberOfItem;
+        int count = CombinationChart.instance.GetCombinationChartInfo(itemId).Count;
+        if (beforeItemCount / count <= 0)
+        {
+            return;
+        }
+
         blackPannel.SetActive(true);
         pieceAssosiation.SetActive(true);
-        bag.SetActive(false);
         pieceAssosiation.GetComponent<PieceAssosiation>().Open(itemId);
 
         pieceAssosiation.transform.Find("Exit").GetComponent<Button>().onClick.RemoveAllListeners();
         pieceAssosiation.transform.Find("Exit").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             pieceAssosiation.SetActive(false);
         });
         pieceAssosiation.transform.Find("취소").GetComponent<Button>().onClick.RemoveAllListeners();
         pieceAssosiation.transform.Find("취소").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             pieceAssosiation.SetActive(false);
         }); 
     }
@@ -398,16 +428,13 @@ public class PopupManager : MonoBehaviour
         blackPannel.SetActive(true);
         auditEnhance.SetActive(true);
         auditEnhance.GetComponent<AuditEnhance>().Open(itemId);
-        bag.SetActive(false);
 
         auditEnhance.transform.Find("Exit").GetComponent<Button>().onClick.RemoveAllListeners();
         auditEnhance.transform.Find("Exit").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             auditEnhance.SetActive(false);
         });
         auditEnhance.transform.Find("취소").GetComponent<Button>().onClick.RemoveAllListeners();
         auditEnhance.transform.Find("취소").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             auditEnhance.SetActive(false);
         });
     }
@@ -613,6 +640,7 @@ public class PopupManager : MonoBehaviour
                         break;
                 }
                 prepab.transform.Find("Right").GetChild(j).GetComponent<Image>().sprite = tempItemSprite;
+                prepab.transform.Find("Right").GetChild(j).GetComponent<Image>().SetNativeSize();
                 prepab.transform.Find("Right").GetChild(j).GetChild(0).GetComponent<Text>().text = tempItemCount.ToString();
             }
         }
@@ -620,9 +648,11 @@ public class PopupManager : MonoBehaviour
     public void Dialogue(int dialogueID , System.Action callback)
     {
         dialogue.SetActive(true);
+    //    Debug.Log(dialogueID);
         dialogue.GetComponent<DialogueManager>().Open(dialogueID, ()=> {  callback(); });
     }
 
+    [Obsolete]
     public void RankingInGameResult(float scoreTime)
     {
         rankingInGameResult.transform.Find("Home").GetComponent<Button>().onClick.RemoveAllListeners();
@@ -753,6 +783,9 @@ public class PopupManager : MonoBehaviour
         blackPannel.SetActive(true);
         purchaseComplete.SetActive(true);
 
+        GameObject particle = Instantiate(firework, purchaseComplete.transform.Find("구매완료이미지").position, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
+
         purchaseComplete.transform.Find("아이템이미지").GetComponent<Image>().sprite = ItemChart.instance.GetItemChartChartInfo(itemId).Image;
         purchaseComplete.transform.Find("아이템이름").GetComponent<Text>().text = TextChart.instance.GetText(ItemChart.instance.GetItemChartChartInfo(itemId).Text);
         purchaseComplete.transform.Find("아이템이름").GetComponent<Text>().font = TextChart.instance.GetFont();
@@ -775,13 +808,15 @@ public class PopupManager : MonoBehaviour
         blackPannel.SetActive(true);
         combineComplete.SetActive(true);
 
+        GameObject particle = Instantiate(firework, combineComplete.transform.Find("조합성공이미지").position, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
+
         combineComplete.transform.Find("아이템이미지").GetComponent<Image>().sprite = ItemChart.instance.GetItemChartChartInfo(itemId).Image;
         combineComplete.transform.Find("아이템이름").GetComponent<Text>().text = TextChart.instance.GetText(ItemChart.instance.GetItemChartChartInfo(itemId).Text);
         combineComplete.transform.Find("아이템이름").GetComponent<Text>().font = TextChart.instance.GetFont();
 
         combineComplete.transform.Find("확인버튼").GetComponent<Button>().onClick.RemoveAllListeners();
         combineComplete.transform.Find("확인버튼").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             combineComplete.SetActive(false);
             callback();
         });
@@ -796,6 +831,8 @@ public class PopupManager : MonoBehaviour
 
         blackPannel.SetActive(true);
         enhanceSucess.SetActive(true);
+        GameObject particle = Instantiate(firework, enhanceSucess.transform.Find("강화성공이미지").position, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
 
         enhanceSucess.transform.Find("아이템이미지").GetComponent<Image>().sprite = ItemChart.instance.GetItemChartChartInfo(itemId).Image;
         enhanceSucess.transform.Find("아이템이름").GetComponent<Text>().text = TextChart.instance.GetText(ItemChart.instance.GetItemChartChartInfo(itemId).Text);
@@ -803,8 +840,8 @@ public class PopupManager : MonoBehaviour
 
         enhanceSucess.transform.Find("확인버튼").GetComponent<Button>().onClick.RemoveAllListeners();
         enhanceSucess.transform.Find("확인버튼").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             enhanceSucess.SetActive(false);
+            Bag();
             callback();
         });
     }
@@ -825,8 +862,8 @@ public class PopupManager : MonoBehaviour
 
         enhanceFail.transform.Find("확인버튼").GetComponent<Button>().onClick.RemoveAllListeners();
         enhanceFail.transform.Find("확인버튼").GetComponent<Button>().onClick.AddListener(() => {
-            blackPannel.SetActive(false);
             enhanceFail.SetActive(false);
+            Bag();
             callback();
         });
     }
@@ -834,6 +871,9 @@ public class PopupManager : MonoBehaviour
     {
         blackPannel.SetActive(true);
         gachaResult.SetActive(true);
+
+        GameObject particle = Instantiate(firework, gachaResult.transform.Find("가챠결과이미지").position, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
 
         Transform content = gachaResult.transform.Find("Scroll View").GetChild(0).GetChild(0);
         for (int i = 0; i < content.childCount; i++)
@@ -999,9 +1039,16 @@ public class PopupManager : MonoBehaviour
         //게임시작
         transform.Find("StartBtn").GetComponent<Button>().onClick.RemoveAllListeners();
         transform.Find("StartBtn").GetComponent<Button>().onClick.AddListener(() => {
-            stageOpen.SetActive(false);
-            blackPannel.SetActive(false);
-            GameManager.instance.StoryGameStart(stageId);
+            if (UserInfo.instance.GetUserHeartInfo().numberOfHeart < 1)
+            {
+                return;
+            }
+            UserInfo.instance.GetUserHeartInfo().numberOfHeart--;
+            UserInfo.instance.SaveUserHeartInfo(() => {
+                stageOpen.SetActive(false);
+                blackPannel.SetActive(false);
+                GameManager.instance.StoryGameStart(stageId);
+            });
         });
     }
 

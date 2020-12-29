@@ -550,7 +550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1.3, y: 13}
+  m_AnchoredPosition: {x: 1.3, y: 1}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45241212
@@ -573,7 +573,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 17eab2e5feaf7534ab1f21ead6f3e3b2, type: 3}
+    m_Font: {fileID: 12800000, guid: 6d1ac0e27191c7a4988c2ecbe23c0c16, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -7008,6 +7008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34c19e2e5e70fc84ea562d001de72aa9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gravity: {fileID: 100000, guid: 4c8ea9181f919534d8ffa73203818111, type: 3}
   food: {fileID: 69956044}
 --- !u!1 &1202912203
 GameObject:
@@ -11549,7 +11550,7 @@ RectTransform:
   m_GameObject: {fileID: 2069394542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1288452441}
   - {fileID: 1534426530}
@@ -11558,7 +11559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 163, y: 593}
+  m_AnchoredPosition: {x: 183, y: 593}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2076168264
@@ -12651,6 +12652,7 @@ MonoBehaviour:
   countText: {fileID: 2624745396457710473}
   minXtransform: {fileID: 2624745396580008667}
   maxXtransform: {fileID: 2624745396587613751}
+  theCam: {fileID: 0}
 --- !u!224 &2352995157267153742
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36313,6 +36315,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   upgradeImg: {fileID: 2624745396173936035}
+  name: {fileID: 0}
+  currentGradeImg: {fileID: 0}
+  nextGradeImg: {fileID: 0}
+  gradeAtlas: {fileID: 0}
   needItemImg: {fileID: 2624745397331047933}
   needNumText: {fileID: 2624745396340840054}
   heartText: {fileID: 2624745396697966620}
@@ -65745,6 +65751,8 @@ MonoBehaviour:
   pause: {fileID: 2624745396901156040}
   timeOver: {fileID: 2624745396790450714}
   setting: {fileID: 2624745398077737617}
+  privacy: {fileID: 0}
+  nicknameChange: {fileID: 0}
   bag: {fileID: 6931313283848636724}
   piece: {fileID: 1494892455371623806}
   pieceAssosiation: {fileID: 7442634387574957587}
@@ -65769,6 +65777,7 @@ MonoBehaviour:
   tutorialBlack: {fileID: 0}
   tutorialSpeech: {fileID: 2624745396877659112}
   sucessAudioSource: {fileID: 3968042656542267303}
+  firework: {fileID: 0}
   firstRankingSprite: {fileID: 21300000, guid: a13d86fb7ab5b1e4e862771ac0d7af60, type: 3}
   secondRankingSprite: {fileID: 21300000, guid: 990661e6ed888a74caa18a3438d9fdd0,
     type: 3}

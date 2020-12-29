@@ -50,7 +50,14 @@ public class GameManager : MonoBehaviour
         int dialogueID = StageChart.instance.GetStageChartInfo(stageID).PrologueId;
         this.dialogueID = dialogueID;
 
-        PopupManager.instance.Dialogue(dialogueID, () => { SceneManager.LoadScene("인게임"); });
+        if (dialogueID != 0)
+        {
+            PopupManager.instance.Dialogue(dialogueID, () => { SceneManager.LoadScene("인게임"); });
+        }
+        else
+        {
+            SceneManager.LoadScene("인게임");
+        }
 
         /*
         if (PlayerPrefs.HasKey(dialogue + dialogueID))

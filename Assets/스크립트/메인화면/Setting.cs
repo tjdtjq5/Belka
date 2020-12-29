@@ -115,21 +115,13 @@ public class Setting : MonoBehaviour
         }
     }
 
-    public void Notice()
+    public void Privacy()
     {
-
+        PopupManager.instance.Privacy();
     }
-    public void ContactUs()
+    public void NicknameChange()
     {
-
-    }
-    public void HowToPlay()
-    {
-
-    }
-    public void UserID()
-    {
-
+        PopupManager.instance.NicknameChange();
     }
     public void LogOut()
     {

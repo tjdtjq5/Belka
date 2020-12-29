@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager instance;
     [HideInInspector] public float bgmVolume;
     [HideInInspector] public float sfxVolume;
+    public GameObject bubble;
 
     private void Awake()
     {
@@ -98,6 +99,10 @@ public class SoundManager : MonoBehaviour
                 buttonAudioSource.Play();
             }
             clickFlag = false;
+            Vector2 p2 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 p3 = new Vector3(p2.x, p2.y, 0);
+            GameObject particle = Instantiate(bubble, p3, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().Play();
         }
     }
 }

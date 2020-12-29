@@ -33,14 +33,18 @@ public class PieceAssosiation : MonoBehaviour
     {
         min = minXtransform.position.x;
         max = maxXtransform.position.x;
-
-        switchCon.position = new Vector2(min, switchCon.position.y);
-        foreSlider.fillAmount = 0;
-        afterItemCount = 0;
-        countText.text = afterItemCount.ToString();
+ 
         beforeItemId = itemId;
         afterItemId = CombinationChart.instance.GetCombinationChartInfo(beforeItemId).AfterID;
         beforeItemCount = UserInfo.instance.GetUserItemInfo(itemId).numberOfItem;
+
+        int count = CombinationChart.instance.GetCombinationChartInfo(beforeItemId).Count;
+        int maxCount = beforeItemCount / count;
+        int minCount = 1;
+        afterItemCount = minCount;
+        countText.text = afterItemCount.ToString();
+        foreSlider.fillAmount = minCount / (float)maxCount;
+        switchCon.position = new Vector2(min + ((max - min) * foreSlider.fillAmount), switchCon.position.y);
 
         beforeImg.sprite = ItemChart.instance.GetItemChartChartInfo(itemId).Image;
         afterImg.sprite = ItemChart.instance.GetItemChartChartInfo(afterItemId).Image;
@@ -61,17 +65,20 @@ public class PieceAssosiation : MonoBehaviour
 
     public void DragSwitch()
     {
+        int count = CombinationChart.instance.GetCombinationChartInfo(beforeItemId).Count;
+        int maxCount = beforeItemCount / count;
+        int minCount = 1;
+        float f = minCount / (float)maxCount;
+
         Vector2 pos = theCam.ScreenToWorldPoint(Input.mousePosition);
-        pos = new Vector2(Mathf.Clamp(pos.x, min, max), switchCon.position.y);
+        pos = new Vector2(Mathf.Clamp(pos.x, min + ((max - min) * f), max), switchCon.position.y);
         switchCon.position = pos;
 
         float maxValue = max - min;
         float currentValue = pos.x - min;
 
         foreSlider.fillAmount = currentValue / maxValue;
-
-        int count = CombinationChart.instance.GetCombinationChartInfo(beforeItemId).Count;
-        int maxCount = beforeItemCount / count;
+      
         afterItemCount = (int)(maxCount * foreSlider.fillAmount);
         countText.text = afterItemCount.ToString();
     }
@@ -91,7 +98,9 @@ public class PieceAssosiation : MonoBehaviour
         UserInfo.instance.SetUserItemInfo(beforeItemId, beforeItemCount);
         if (UserInfo.instance.GetUserItemInfo(afterItemId) != null) afterItemCount += UserInfo.instance.GetUserItemInfo(afterItemId).numberOfItem;
         UserInfo.instance.SetUserItemInfo(afterItemId, afterItemCount);
-        PopupManager.instance.CombineComplete(afterItemId,()=> { });
+        PopupManager.instance.Bag();
+        PopupManager.instance.CombineComplete(afterItemId,()=> {
+        });
         UserInfo.instance.SaveUserItemInfo(()=> { });
     }
 }

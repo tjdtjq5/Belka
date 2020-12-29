@@ -61,7 +61,6 @@ public class RankingManager : MonoBehaviour
         BackendGameInfo.instance.GetPrivateContents("Ranking", "inDate", () => {
             string inDate = BackendGameInfo.instance.serverDataList[0];
             BackendAsyncClass.BackendAsync(Backend.GameInfo.UpdateRTRankTable, "Ranking", key, inDate, (int)score, (updateRTRankTableCallback) => {
-                Debug.Log(updateRTRankTableCallback.GetStatusCode());
                 switch (updateRTRankTableCallback.GetErrorCode())
                 {
                     case "ForbiddenException":
@@ -85,6 +84,7 @@ public class RankingManager : MonoBehaviour
                         Debug.Log("비활성화 된 tableName인 경우");
                         return;
                 }
+                scoreCallback();
             });
         });
     }

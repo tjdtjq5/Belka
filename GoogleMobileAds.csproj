@@ -345,6 +345,9 @@
     <Reference Include="Google.VersionHandlerImpl_v1.2.157">
       <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.157.dll</HintPath>
     </Reference>
+    <Reference Include="JMOAssets_CartoonFXFreeWelcome">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
+    </Reference>
     <Reference Include="DemiLib">
       <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>
     </Reference>

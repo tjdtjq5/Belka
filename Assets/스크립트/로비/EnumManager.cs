@@ -23,10 +23,10 @@ public enum CharacterType
 {
     없음,
     한별,
-    캐릭터2,
-    캐릭터3,
-    캐릭터4,
-    캐릭터5
+    김지훈,
+    설명중,
+    최빛나,
+    이아름
 }
 public enum ShopType
 {

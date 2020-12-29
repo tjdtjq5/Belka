@@ -36,10 +36,12 @@ public class UserInfo : MonoBehaviour
     public void SaveUserStageInfo(System.Action saveCallback)
     {
         Param param = new Param();
+        List<string> dataList = new List<string>();
         for (int i = 0; i < userStageInfos.Count; i++)
         {
-            param.Add("Stage", userStageInfos[i].stageId + "-" + userStageInfos[i].clearTime + "-" + userStageInfos[i].starCount);
+            dataList.Add(userStageInfos[i].stageId + "-" + userStageInfos[i].clearTime + "-" + userStageInfos[i].starCount);
         }
+        param.Add("Stage", dataList);
         BackendGameInfo.instance.PrivateTableUpdate("UserInfo", param, ()=> { saveCallback(); });
     }
     [System.Obsolete]

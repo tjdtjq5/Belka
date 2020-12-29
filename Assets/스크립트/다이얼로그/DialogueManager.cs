@@ -40,6 +40,7 @@ public class DialogueManager : MonoBehaviour
         this.dialogueID = dialogueID;
         this.callback = callback;
         dialogChartInfos = DialogChart.instance.GetDialogChartInfos(dialogueID);
+        Debug.Log(dialogueID);
         step = 0;
         character01.DOFade(0, 0);
         character02.DOFade(0, 0);
@@ -49,6 +50,7 @@ public class DialogueManager : MonoBehaviour
     // 초기화 
     void Initialized()
     {
+      //  Debug.Log(step);
         bgImg.sprite = dialogChartInfos[step].BG;
 
         if (dialogChartInfos[step].BG2 != null)

@@ -71,6 +71,7 @@
     <Compile Include="Assets\GooglePlayGames\Editor\GPGSUpgrader.cs" />
     <Compile Include="Assets\GooglePlayGames\Editor\GPGSUtil.cs" />
     <Compile Include="Assets\GooglePlayGames\Editor\NearbyConnectionUI.cs" />
+    <Compile Include="Assets\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
     <Compile Include="Assets\Unity-Logs-Viewer\Reporter\Editor\ReporterEditor.cs" />
     <Compile Include="Assets\리소스\이펙트\AllIn1SpriteShader\Editor\AllIn1ShaderScriptEditor.cs" />
     <Compile Include="Assets\리소스\이펙트\AllIn1SpriteShader\Editor\AllIn1SpriteShader.cs" />
@@ -295,6 +296,9 @@
     </Reference>
     <Reference Include="Google.VersionHandlerImpl_v1.2.157">
       <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/ExternalDependencyManager/Editor/Google.VersionHandlerImpl_v1.2.157.dll</HintPath>
+    </Reference>
+    <Reference Include="JMOAssets_CartoonFXFreeWelcome">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/JMO Assets/Editor/JMOAssets_CartoonFXFreeWelcome.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
       <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>

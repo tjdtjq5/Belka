@@ -12,7 +12,25 @@ public class Bag : MonoBehaviour
     {
         Initialized();
         List<UserItemInfo> userItemInfos = UserInfo.instance.GetUserItemInfos();
-        UserInfoSet(userItemInfos);
+        List<int> itemId = new List<int>();
+        for (int i = 0; i < userItemInfos.Count; i++)
+        {
+            itemId.Add(userItemInfos[i].itemId);
+        }
+        itemId.Sort();
+        List<UserItemInfo> temp = new List<UserItemInfo>();
+        for (int i = 0; i < userItemInfos.Count; i++)
+        {
+            for (int j = 0; j < userItemInfos.Count; j++)
+            {
+                if (itemId[i] == userItemInfos[j].itemId)
+                {
+                    temp.Add(userItemInfos[j]);
+                    break;
+                }
+            }
+        }
+        UserInfoSet(temp);
     }
 
     void Initialized()

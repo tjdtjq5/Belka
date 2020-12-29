@@ -9,7 +9,10 @@ public class FoodManager : MonoBehaviour
     public static FoodManager instance;
     private void Awake() { instance = this; }
 
+    public GameObject gravity;
+
     public Transform food;
+    public Transform toolTransform;
     int foodId = 0;
     int numberOfFood = 0;
     int count = 0;
@@ -55,7 +58,6 @@ public class FoodManager : MonoBehaviour
             food.GetChild(i).GetComponent<Image>().SetNativeSize();
         }
     }
-
     public bool SetFood(int foodId)
     {
         if (this.foodId != foodId) return false; // 다른 음식id가 들어온 경우
@@ -63,13 +65,25 @@ public class FoodManager : MonoBehaviour
         food.GetChild(count).GetComponent<Image>().color = Color.white;
         food.GetChild(count).rotation = Quaternion.Euler(0, 0, 0);
         food.GetChild(count).DOShakeRotation(4, 6, 5);
+
+        Vector3 particlePosition = new Vector3(food.GetChild(count).position.x, food.GetChild(count).position.y, 0);
+        GameObject particle = Instantiate(gravity, particlePosition, Quaternion.identity);
+        particle.GetComponent<ParticleSystem>().Play();
+
         count++;
+
+     
 
         if (count >= numberOfFood)
         {
             // 게임 클리어 
             Debug.Log("===게임 클리어===");
             TimeManager.instance.TimeStop();
+
+            for (int i = 0; i < toolTransform.childCount; i++)
+            {
+                toolTransform.GetChild(i).GetComponent<Tool>().SoundStop();
+            }
 
             switch (GameManager.instance.IngameType)
             {
@@ -78,7 +92,10 @@ public class FoodManager : MonoBehaviour
 
                     string dialogue = "DialogueID";
                     int dialogueID = StageChart.instance.GetStageChartInfo(GameManager.instance.currentStageId).EpilogueId;
-                    PopupManager.instance.Dialogue(dialogueID, () => { PopupManager.instance.dialogue.SetActive(false); });
+                    if (dialogueID != 0)
+                    {
+                        PopupManager.instance.Dialogue(dialogueID, () => { PopupManager.instance.dialogue.SetActive(false); });
+                    }
                     if (!PlayerPrefs.HasKey(dialogue + dialogueID))
                     {
                     }

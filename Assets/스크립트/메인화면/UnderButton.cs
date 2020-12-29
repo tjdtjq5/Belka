@@ -22,11 +22,39 @@ public class UnderButton : MonoBehaviour
     public Transform stageIcon;
     public Transform rankingIcon;
 
-    int index = 2;
+    static int index = 2;
 
     private void Start()
     {
         SoundManager.instance.LobbyBgmStart();
+
+        switch (index)
+        {
+            case 0:
+                SizeDeltaTrans(shopBtn);
+                pannel.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
+                break;
+            case 1:
+                SizeDeltaTrans(characterBtn);
+                pannel.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
+                break;
+            case 2:
+                SizeDeltaTrans(stageBtn);
+                pannel.localPosition = new Vector2(0, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(0, pannel.localPosition.y);
+                pannel3.localPosition = new Vector2(0, pannel.localPosition.y);
+                break;
+            case 3:
+                SizeDeltaTrans(rankingBtn);
+                pannel.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
+                pannel3.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
+                break;
+        }
     }
 
     public void OnClickShop()

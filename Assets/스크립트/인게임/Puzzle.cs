@@ -9,6 +9,7 @@ public class Puzzle : MonoBehaviour
 {
     public int childNumber = 0;
     public int foodId = 0;
+    public Camera theCam;
 
     Vector3 originLocalPos;
     private void Start()
@@ -71,7 +72,8 @@ public class Puzzle : MonoBehaviour
             GameObject tempPrepab = prepab;
             prepab = null;
 
-            RaycastHit2D hit = Physics2D.Raycast(Input.mousePosition, Vector2.zero);
+            Vector2 mousePosition = theCam.ScreenToWorldPoint(Input.mousePosition);
+            RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
             if (!hit)
             {
                 Destroy(tempPrepab);
@@ -87,7 +89,8 @@ public class Puzzle : MonoBehaviour
                 {
                     //음식넣기 성공
                     MaterialManager.instance.MaterialSet(childNumber);
-                    tempPrepab.transform.GetChild(0).DOMove(new Vector2(hit.transform.position.x , hit.transform.position.y - 25), .8f).SetEase(Ease.InQuad);
+                    Vector2 hitPosition = theCam.WorldToScreenPoint(hit.transform.position);
+                    tempPrepab.transform.GetChild(0).DOMove(new Vector2(hitPosition.x , hitPosition.y - 25), .8f).SetEase(Ease.InQuad);
                     tempPrepab.transform.GetChild(0).DOScale(.4f, .8f).OnComplete(() => { Destroy(tempPrepab); });
                     tempPrepab.transform.GetChild(0).GetComponent<Image>().DOFade(.4f, 0.8f).OnComplete(()=> {
                         Destroy(tempPrepab); });

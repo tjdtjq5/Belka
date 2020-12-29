@@ -12,7 +12,6 @@ public class Tutorial02Manager : MonoBehaviour
     public GameObject mask01;
     public GameObject mask02;
     public GameObject mask03;
-    public GameObject mask04;
 
 
     int step = 0;
@@ -96,8 +95,6 @@ public class Tutorial02Manager : MonoBehaviour
                 PopupManager.instance.tutorialSpeech.GetComponent<Image>().raycastTarget = true;
 
                 mask03.SetActive(false);
-                mask04.SetActive(true);
-                mask04.transform.position = new Vector2(0, -1.9f);
 
                 PopupManager.instance.TutorialSpeech("Tutorial_21", () => { NextStep(); });
                 break;
@@ -107,7 +104,6 @@ public class Tutorial02Manager : MonoBehaviour
             case 6:
                 PopupManager.instance.TutorialSpeech("Tutorial_23", () => {
                     blackFade.SetActive(false);
-                    mask04.SetActive(false);
                     PopupManager.instance.tutorialSpeech.SetActive(false);
                     Param param = new Param();
                     param.Add("Tutorial02", false);

@@ -19,6 +19,7 @@ public class Tool : MonoBehaviour
 
     public AudioSource putlnAudioSource;
     public AudioSource putSetAudioSource;
+    public GameObject smokePuff;
 
     public void SetTool(int childNumber,int toolId,int[] materialList, float collTime, int finishFoodId)
     {
@@ -127,6 +128,9 @@ public class Tool : MonoBehaviour
 
             shakeCoroutine = ShakeCoroutine();
             StartCoroutine(shakeCoroutine);
+
+            GameObject particle = Instantiate(smokePuff, this.transform.position, Quaternion.identity);
+            particle.GetComponent<ParticleSystem>().Play();
         }
 
         if (materialSetList.Count == materialList.Length) // 음식을 넣은것을 확인해보니 다 담겨진 경우 
@@ -204,5 +208,11 @@ public class Tool : MonoBehaviour
         }
 
         this.transform.Find("Pannel").Find("ToolImg").rotation = Quaternion.Euler(0, 0, 0);
+    }
+
+    public void SoundStop()
+    {
+        putlnAudioSource.Stop();
+        putSetAudioSource.Stop();
     }
 }

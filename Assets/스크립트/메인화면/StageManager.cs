@@ -79,7 +79,9 @@ public class StageManager : MonoBehaviour
 
             if (stageChartInfos[i].OpenStageId != 0 && UserInfo.instance.GetUserStageInfo(stageChartInfos[i].OpenStageId) == null)
             {
+                StageChartInfo stageChartInfo = StageChart.instance.GetStageChartInfo(stageChartInfos[i].OpenStageId);
                 pripab.transform.Find("잠금").gameObject.SetActive(true);
+                pripab.transform.Find("잠금").Find("Text").GetComponent<Text>().text = stageChartInfo.StageGroupId + "-" + stageChartInfo.StageGroupInId + " 클리어 시 해제";
             }
             else
             {
@@ -223,7 +225,7 @@ public class StageManager : MonoBehaviour
                     stagePripab02Transform.GetChild(j).Find("특수잠금").gameObject.SetActive(true);
 
                     //특수잠금 해제
-                    if ((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)conditionCharacter] >= (int)conditionCharacterGrade && conditionStarCount <= userStarCount02)
+                    if ((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)conditionCharacter] >= (int)conditionCharacterGrade  && conditionStarCount <= userStarCount02)
                     {
                         stagePripab02Transform.GetChild(j).Find("특수잠금").gameObject.SetActive(false);
                         stagePripab02Transform.GetChild(j).GetComponent<Button>().onClick.AddListener(() => {
@@ -257,7 +259,8 @@ public class StageManager : MonoBehaviour
 
                         stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").Find("설명").GetComponent<Text>().text = conditionCharacter.ToString();
                         stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").Find("등급이미지").GetComponent<Image>().sprite = gradeSpriteAtlas.GetSprite("Grade" + ((int)conditionCharacterGrade-1));
-                        stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "별 " + conditionStarCount + "개";
+                        if (conditionStarCount <= 0) stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "";
+                        else stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "별 " + conditionStarCount + "개";
                     }
 
 
