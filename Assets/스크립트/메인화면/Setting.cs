@@ -125,32 +125,38 @@ public class Setting : MonoBehaviour
     }
     public void LogOut()
     {
-        Backend.BMember.Logout();
-        PlayerPrefs.DeleteKey("login");
-        SceneManager.LoadScene("로비");
+        PopupManager.instance.BtnAlram(() => {
+            Backend.BMember.Logout();
+            PlayerPrefs.DeleteKey("login");
+            SceneManager.LoadScene("로비");
+        }, "Setting_LogOut", "Logout");
     }
 
     [Obsolete]
     public void DeleteAccount()
     {
-        if (PlayerPrefs.GetString("login") == "Custom")
-        {
-            PlayerPrefs.DeleteKey("id");
-            PlayerPrefs.DeleteKey("password");
-        }
+        PopupManager.instance.BtnAlram(() => {
+            
+            if (PlayerPrefs.GetString("login") == "Custom")
+            {
+                PlayerPrefs.DeleteKey("id");
+                PlayerPrefs.DeleteKey("password");
+            }
 
-        BackendGameInfo.instance.GetPrivateContents("UserInfo", "inDate", () => { Backend.GameInfo.Delete("UserInfo", BackendGameInfo.instance.serverDataList[0]);
-            BackendReturnObject servertime = Backend.Utils.GetServerTime();
-            string time = servertime.GetReturnValuetoJSON()["utcTime"].ToString();
-            DateTime parsedDate = DateTime.Parse(time);
-            string updateNickname = parsedDate.Year.ToString() + parsedDate.Month.ToString() + parsedDate.Day.ToString() + parsedDate.Hour.ToString() + parsedDate.Minute.ToString() + parsedDate.Second.ToString() + UnityEngine.Random.Range(0, 1000).ToString();
-            Backend.BMember.UpdateNickname(updateNickname);
+            BackendGameInfo.instance.GetPrivateContents("UserInfo", "inDate", () => {
+                Backend.GameInfo.Delete("UserInfo", BackendGameInfo.instance.serverDataList[0]);
+                BackendReturnObject servertime = Backend.Utils.GetServerTime();
+                string time = servertime.GetReturnValuetoJSON()["utcTime"].ToString();
+                DateTime parsedDate = DateTime.Parse(time);
+                string updateNickname = parsedDate.Year.ToString() + parsedDate.Month.ToString() + parsedDate.Day.ToString() + parsedDate.Hour.ToString() + parsedDate.Minute.ToString() + parsedDate.Second.ToString() + UnityEngine.Random.Range(0, 1000).ToString();
+                Backend.BMember.UpdateNickname(updateNickname);
 
-            Backend.BMember.SignOut();
+                Backend.BMember.SignOut();
 
-            PlayerPrefs.DeleteKey("login");
-            SceneManager.LoadScene("로비");
-        });
+                PlayerPrefs.DeleteKey("login");
+                SceneManager.LoadScene("로비");
+            });
+        }, "Setting_DeleteAccount", "AccountDelete");
     }
     public void GooglePederation()
     {
@@ -251,6 +257,7 @@ public class Setting : MonoBehaviour
                 case "409":
                     // 이미 가입되어 있는 경우
                     Debug.Log("Duplicated federationId, 중복된 federationId 입니다");
+                    PopupManager.instance.Alram("Error_05");
                     break;
             }
         }

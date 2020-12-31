@@ -53,6 +53,7 @@ public class CharacterManager : MonoBehaviour
                 testTransforms[i].Find("Text").GetComponent<Text>().text = (GradeType)(i + 2) + "등급 심사 통과";
                 testTransforms[i].Find("Image").gameObject.SetActive(true);
                 testTransforms[i].GetComponent<Button>().onClick.RemoveAllListeners();
+                testTransforms[i].GetComponent<Image>().color = Color.gray;
             }
             else if ( i + 1 == (int)gradeType)
             {
@@ -63,12 +64,14 @@ public class CharacterManager : MonoBehaviour
                     if (Tutorial02Manager.instance.tutorialFlag) Tutorial02Manager.instance.NextStep();
                     PopupManager.instance.CharacterUpgrade(currentCharacter, gradeType); 
                 });
+                testTransforms[i].GetComponent<Image>().color = Color.white;
             }
             else
             {
                 testTransforms[i].Find("Text").GetComponent<Text>().text = "   " + (GradeType)(i + 2) + "등급 심사 자격 필요";
                 testTransforms[i].Find("Image").gameObject.SetActive(false);
                 testTransforms[i].GetComponent<Button>().onClick.RemoveAllListeners();
+                testTransforms[i].GetComponent<Image>().color = Color.gray;
             }
         }
     }

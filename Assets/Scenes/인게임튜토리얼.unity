@@ -8995,7 +8995,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Refeash
+  m_Text: Refresh
 --- !u!222 &1583950879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11550,7 +11550,7 @@ RectTransform:
   m_GameObject: {fileID: 2069394542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1288452441}
   - {fileID: 1534426530}
@@ -11559,7 +11559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183, y: 593}
+  m_AnchoredPosition: {x: 290, y: 666.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2076168264
@@ -65773,6 +65773,8 @@ MonoBehaviour:
   gachaResult: {fileID: 2624745396095317437}
   gachaBoxOpen: {fileID: 2624745397168707630}
   stageOpen: {fileID: 2624745396285339199}
+  btnAlram: {fileID: 0}
+  alram: {fileID: 0}
   tutorialBlackText: {fileID: 0}
   tutorialBlack: {fileID: 0}
   tutorialSpeech: {fileID: 2624745396877659112}

@@ -36,13 +36,25 @@ public class CharacterUpgarde : MonoBehaviour
 
         playBtn.onClick.RemoveAllListeners();
         playBtn.onClick.AddListener(() => {
-            if (UserInfo.instance.GetUserHeartInfo().numberOfHeart >= characterUpgradeChartInfo.HeartCount && myNum >= characterUpgradeChartInfo.UpgradeItemCount)
+            if (UserInfo.instance.GetUserHeartInfo().numberOfHeart >= characterUpgradeChartInfo.HeartCount)
             {
-                UserInfo.instance.PullUserHeart(characterUpgradeChartInfo.HeartCount);
-                UserInfo.instance.SaveUserHeartInfo(() => {
-                    GameManager.instance.CharacterUpgradeGameStart(characterUpgradeChartInfo.StageId, characterType);
-                });
+                if (myNum >= characterUpgradeChartInfo.UpgradeItemCount)
+                {
+                    UserInfo.instance.PullUserHeart(characterUpgradeChartInfo.HeartCount);
+                    UserInfo.instance.SaveUserHeartInfo(() => {
+                        GameManager.instance.CharacterUpgradeGameStart(characterUpgradeChartInfo.StageId, characterType);
+                    });
+                }
+                else
+                {
+                    PopupManager.instance.Alram("Error_03");
+                }
             }
+            else
+            {
+                PopupManager.instance.Alram("Error_01");
+            }
+           
         });
     }
 }

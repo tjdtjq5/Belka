@@ -23,29 +23,15 @@ public class BackendInitial : MonoBehaviour
         {
             Debug.Log("뒤끝SDK 초기화 완료");
 
-            string googleKey = Backend.Utils.GetGoogleHash();
-            for (int i = 0; i < googleKey.Length; i++)
-            {
-                if (googleKey[i] == 'l')
-                {
-                    Debug.Log("L의 소문자 입니다. ");
-                }
-                if (googleKey[i] == 'I')
-                {
-                    Debug.Log("i의 대문자 입니다. ");
-                }
-                Debug.Log(googleKey[i]);
-            }
-
             if (PlayerPrefs.HasKey("login"))
             {
                 switch (PlayerPrefs.GetString("login"))
                 {
                     case "Custom":
-                        CustomLogin(() => { lobbyLoding.Loading(); });
+                        OnClickGuest();
                         break;
                     case "Google":
-                        GoogleAuth(() => { lobbyLoding.Loading(); });
+                        OnClickGoogle();
                         break;
                     default:
                         for (int i = 0; i < loginBtn.Length; i++)
@@ -214,7 +200,7 @@ public class BackendInitial : MonoBehaviour
                     Debug.Log("구글 로그인 실패");
                     return;
                 }
-                /*
+                /*a
                 // 로그인이 성공되었습니다.
                 Debug.Log("GetIdToken - " + PlayGamesPlatform.Instance.GetIdToken());
                 Debug.Log("Email - " + ((PlayGamesLocalUser)Social.localUser).Email);
@@ -304,6 +290,7 @@ public class BackendInitial : MonoBehaviour
         }
         else
         {
+            Debug.Log("bb");
             BackendReturnObject BRO = Backend.BMember.AuthorizeFederation(GetTokens(), FederationType.Google, "gpgs로 만든계정");
             if (BRO.IsSuccess())
             {
@@ -385,6 +372,7 @@ public class BackendInitial : MonoBehaviour
     // 구글 토큰 받아오기
     private string GetTokens()
     {
+        Debug.Log("Token isSuccess :  " + PlayGamesPlatform.Instance.localUser.authenticated);
         if (PlayGamesPlatform.Instance.localUser.authenticated)
         {
             // 유저 토큰 받기 첫번째 방법

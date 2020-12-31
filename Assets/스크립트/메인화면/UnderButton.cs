@@ -27,32 +27,29 @@ public class UnderButton : MonoBehaviour
     private void Start()
     {
         SoundManager.instance.LobbyBgmStart();
-
+        
         switch (index)
         {
             case 0:
                 SizeDeltaTrans(shopBtn);
                 pannel.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX * 2, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX * 2, pannel3.localPosition.y);
                 break;
             case 1:
                 SizeDeltaTrans(characterBtn);
                 pannel.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX, pannel3.localPosition.y);
                 break;
             case 2:
                 SizeDeltaTrans(stageBtn);
                 pannel.localPosition = new Vector2(0, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(0, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(0, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(0, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(0, pannel3.localPosition.y);
                 break;
             case 3:
-                SizeDeltaTrans(rankingBtn);
-                pannel.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
+                OnClickRanking();
                 break;
         }
     }

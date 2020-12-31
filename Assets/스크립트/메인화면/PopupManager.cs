@@ -42,12 +42,20 @@ public class PopupManager : MonoBehaviour
     [SerializeField] GameObject gachaResult;
     [SerializeField] GameObject gachaBoxOpen;
     [SerializeField] GameObject stageOpen;
+    [SerializeField] GameObject btnAlram;
+    [SerializeField] GameObject alram;
     public GameObject tutorialBlackText;
     public GameObject tutorialBlack;
     public GameObject tutorialSpeech;
 
     public AudioSource sucessAudioSource;
     public GameObject firework;
+    [ContextMenu("aa")]
+    public void test()
+    {
+        tutorialBlack.SetActive(true);
+        tutorialBlack.transform.position = result.transform.Find("HomeBtn").position;
+    }
     public void ShopPerchase(int shopId ,System.Action callback)
     {
         blackPannel.SetActive(true);
@@ -91,6 +99,10 @@ public class PopupManager : MonoBehaviour
                         });
                         PurchaseComplete(rewardItem, () => { });
                     }
+                    else
+                    {
+                        Alram("Error_02");
+                    }
                 });
                 break;
             case BuyType.Cash:
@@ -130,10 +142,10 @@ public class PopupManager : MonoBehaviour
         UserStageInfo userStageInfo = UserInfo.instance.GetUserStageInfo(stageId);
         float bestScoreTime = scoreTime;
         int userStarCount = 0;
-        bool isFirst = false;
+        bool isFirst = true;
         if (userStageInfo != null)
         {
-            isFirst = true;
+            isFirst = false;
             userStarCount = userStageInfo.starCount;
             if (userStageInfo.clearTime > scoreTime) bestScoreTime = userStageInfo.clearTime;
         }
@@ -177,7 +189,6 @@ public class PopupManager : MonoBehaviour
             result.transform.Find("Star").GetChild(i).GetChild(0).gameObject.SetActive(true);
         }
 
-        int len = 0;
         for (int i = 0; i < result.transform.Find("Reward").childCount; i++)
         {
             result.transform.Find("Reward").GetChild(i).gameObject.SetActive(false);
@@ -187,15 +198,14 @@ public class PopupManager : MonoBehaviour
         int[] rewardIds = StageChart.instance.GetStageChartInfo(stageId).RewardId;
         int[] rewardCount = StageChart.instance.GetStageChartInfo(stageId).RewardCount;
 
-        len = userStarCount;
-        if (len > result.transform.Find("Reward").childCount) len = result.transform.Find("Reward").childCount;
+        int len = starCount;
+        Debug.Log(len);
+        if (!isFirst)
+        {
+            len = 0;
+        }
         for (int i = 0; i < len; i++)
         {
-            if (isFirst)
-            {
-                len = 0;
-                break;
-            }
             result.transform.Find("Reward").GetChild(i).gameObject.SetActive(true);
             switch (rewardTypes[i])
             {
@@ -224,8 +234,6 @@ public class PopupManager : MonoBehaviour
         RewardType[] clearRewardType = StageChart.instance.GetStageChartInfo(stageId).ClearRewardType;
         int[] clearRewardId = StageChart.instance.GetStageChartInfo(stageId).ClearRewardId;
         int[] clearRewardCount = StageChart.instance.GetStageChartInfo(stageId).ClearRewardCount;
-
-        Debug.Log(clearRewardId.Length);
 
         int len02 = len + clearRewardType.Length;
         if (len02 > result.transform.Find("Reward").childCount) len02 = result.transform.Find("Reward").childCount;
@@ -291,6 +299,7 @@ public class PopupManager : MonoBehaviour
                                     BackendGameInfo.instance.PrivateTableUpdate("UserInfo", param);
                                     TutorialBlackText("Tutorial_17");
                                     tutorialBlack.SetActive(true);
+                                    tutorialBlack.transform.position = result.transform.Find("HomeBtn").position;
                                 }
                             });
                         }
@@ -335,6 +344,12 @@ public class PopupManager : MonoBehaviour
 
         blackPannel.SetActive(true);
         setting.SetActive(true);
+
+        setting.transform.Find("bg").GetChild(0).GetComponent<Text>().text = TextChart.instance.GetText("Setting_Title");
+        setting.transform.Find("Sound").GetChild(1).GetComponent<Text>().text = TextChart.instance.GetText("Setting_Sound");
+        setting.transform.Find("Music").GetChild(1).GetComponent<Text>().text = TextChart.instance.GetText("Setting_Music");
+        setting.transform.Find("Vibration").GetChild(1).GetComponent<Text>().text = TextChart.instance.GetText("Setting_Vibration");
+        setting.transform.Find("Language").GetChild(1).GetComponent<Text>().text = TextChart.instance.GetText("Setting_Language");
 
         setting.transform.Find("Exit").GetComponent<Button>().onClick.RemoveAllListeners();
         setting.transform.Find("Exit").GetComponent<Button>().onClick.AddListener(() => {
@@ -688,7 +703,21 @@ public class PopupManager : MonoBehaviour
 
                         int rank = RankingManager.instance.rankingUserInfos[0].rank;
                         Debug.Log("내 랭킹 가져오기 성공 : " + rank);
-                        rankingInGameResult.transform.Find("Ranking").GetChild(0).GetComponent<Text>().text = rank + "TH";
+                        switch (rank)
+                        {
+                            case 1:
+                                rankingInGameResult.transform.Find("Ranking").GetChild(0).GetComponent<Text>().text = rank + "st";
+                                break;
+                            case 2:
+                                rankingInGameResult.transform.Find("Ranking").GetChild(0).GetComponent<Text>().text = rank + "nd";
+                                break;
+                            case 3:
+                                rankingInGameResult.transform.Find("Ranking").GetChild(0).GetComponent<Text>().text = rank + "rd";
+                                break;
+                            default:
+                                rankingInGameResult.transform.Find("Ranking").GetChild(0).GetComponent<Text>().text = rank + "TH";
+                                break;
+                        }
 
                         blackPannel.SetActive(true);
                         rankingInGameResult.SetActive(true);
@@ -891,6 +920,7 @@ public class PopupManager : MonoBehaviour
             content.GetChild(i).GetComponent<Image>().sprite = ItemChart.instance.GetItemChartChartInfo(itemId[i]).Image;
             content.GetChild(i).GetChild(0).GetComponent<Text>().text = TextChart.instance.GetText(ItemChart.instance.GetItemChartChartInfo(itemId[i]).Text);
             content.GetChild(i).GetChild(0).GetComponent<Text>().font = TextChart.instance.GetFont();
+            content.GetChild(i).GetChild(1).GetComponent<Text>().text = itemCount[i].ToString();
         }
 
         gachaResult.transform.Find("확인버튼").GetComponent<Button>().onClick.RemoveAllListeners();
@@ -934,6 +964,9 @@ public class PopupManager : MonoBehaviour
         transform.Find("오늘의 요리").Find("Food").GetComponent<Image>().sprite = FoodChart.instance.GetFoodChartInfo(lastFood).Image;
         transform.Find("오늘의 요리").Find("Food").GetComponent<Image>().SetNativeSize();
         transform.Find("오늘의 요리").Find("Number").GetComponent<Text>().text = "x" + numberFood;
+
+        transform.Find("popupRibbon").GetChild(0).GetComponent<Text>().text = "STAGE " + StageChart.instance.GetStageChartInfo(stageId).StageGroupId + "-" + StageChart.instance.GetStageChartInfo(stageId).StageGroupInId;
+
 
         // 레시피
         int toolCount = 0;
@@ -1041,6 +1074,7 @@ public class PopupManager : MonoBehaviour
         transform.Find("StartBtn").GetComponent<Button>().onClick.AddListener(() => {
             if (UserInfo.instance.GetUserHeartInfo().numberOfHeart < 1)
             {
+                Alram("Error_01");
                 return;
             }
             UserInfo.instance.GetUserHeartInfo().numberOfHeart--;
@@ -1101,5 +1135,67 @@ public class PopupManager : MonoBehaviour
             if (callback != null) callback();
             touchScreen.GetComponent<Button>().onClick.RemoveAllListeners();
         });
+    }
+    public void BtnAlram(System.Action callback, string titleTextID ,string textID)
+    {
+        btnAlram.gameObject.SetActive(true);
+
+        btnAlram.transform.Find("BG").GetChild(0).GetComponent<Text>().text = TextChart.instance.GetText(titleTextID);
+        btnAlram.transform.Find("Text").GetComponent<Text>().text = TextChart.instance.GetText(textID);
+
+        btnAlram.transform.Find("취소").GetChild(0).GetComponent<Text>().text = TextChart.instance.GetText("Button_Cancle");
+        btnAlram.transform.Find("취소").GetComponent<Button>().onClick.RemoveAllListeners();
+        btnAlram.transform.Find("취소").GetComponent<Button>().onClick.AddListener(() => {
+            btnAlram.gameObject.SetActive(false);
+        });
+
+        btnAlram.transform.Find("확인").GetChild(0).GetComponent<Text>().text = TextChart.instance.GetText("Button_OK");
+        btnAlram.transform.Find("확인").GetComponent<Button>().onClick.RemoveAllListeners();
+        btnAlram.transform.Find("확인").GetComponent<Button>().onClick.AddListener(() => {
+            callback();
+            btnAlram.gameObject.SetActive(false);
+        });
+    }
+
+    IEnumerator alramCoroutine;
+    public void Alram(string textID)
+    {
+        if (alramCoroutine != null)
+        {
+            StopCoroutine(alramCoroutine);
+        }
+        alramCoroutine = AlramCoroutine(textID);
+        StartCoroutine(alramCoroutine);
+    }
+    IEnumerator AlramCoroutine(string textID)
+    {
+        WaitForSeconds waitTime = new WaitForSeconds(0.02f);
+
+        float fadeSpeed = 0.1f;
+        float a = 0;
+
+        alram.transform.Find("Text").GetComponent<Text>().text = TextChart.instance.GetText(textID);
+        alram.transform.Find("Text").GetComponent<Text>().color = new Color(1, 1, 1, a);
+        alram.transform.Find("BG").GetComponent<Image>().color = new Color(1, 1, 1, a);
+
+        alram.gameObject.SetActive(true);
+
+        while (a < 1)
+        {
+            a += fadeSpeed;
+            alram.transform.Find("Text").GetComponent<Text>().color = new Color(1, 1, 1, a);
+            alram.transform.Find("BG").GetComponent<Image>().color = new Color(1, 1, 1, a);
+            yield return waitTime;
+        }
+
+        yield return new WaitForSeconds(1);
+
+        while (a > 0.05)
+        {
+            a -= fadeSpeed;
+            alram.transform.Find("Text").GetComponent<Text>().color = new Color(1, 1, 1, a);
+            alram.transform.Find("BG").GetComponent<Image>().color = new Color(1, 1, 1, a);
+            yield return waitTime;
+        }
     }
 }

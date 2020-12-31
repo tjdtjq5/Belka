@@ -12,9 +12,6 @@ public class RankingManager : MonoBehaviour
 
     public List<RankingUserInfo> rankingUserInfos = new List<RankingUserInfo>();
 
-    const string colum01 = "Score01"; // 홀수일
-    const string colum02 = "Score02"; // 짝수일 
-
     [SerializeField] string[] uuid;
 
     [ContextMenu("테스트 점수 등록")]
@@ -107,9 +104,6 @@ public class RankingManager : MonoBehaviour
 
             switch (rankingByUuidCallback.GetStatusCode())
             {
-                case "200":
-                    Debug.Log("랭킹이 없는 경우");
-                    break;
                 case "404":
                     Debug.Log("랭킹 Uuid가 틀린 경우");
                     break;
@@ -145,9 +139,6 @@ public class RankingManager : MonoBehaviour
 
             switch (rankingByUuidCallback.GetStatusCode())
             {
-                case "200":
-                    Debug.Log("랭킹이 없는 경우");
-                    return;
                 case "404":
                     Debug.Log("랭킹 Uuid가 틀린 경우");
                     return;

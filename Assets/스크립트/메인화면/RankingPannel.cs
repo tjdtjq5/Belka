@@ -64,7 +64,7 @@ public class RankingPannel : MonoBehaviour
     {
         if (UserInfo.instance.GetRemainRankingCount() <= 0)
         {
-            Debug.Log("하루 소진횟수 초과");
+            PopupManager.instance.Alram("Error_04");
             return;
         }
         UserInfo.instance.RankingCounting();
