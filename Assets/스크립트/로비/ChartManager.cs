@@ -41,7 +41,9 @@ public class ChartManager : MonoBehaviour
                                                                         ConfigChart.instance.LoadChart(() => {
                                                                             GachaBoxChart.instance.LoadChart(() => {
                                                                                 StageGroupChart.instance.LoadChart(() => {
-                                                                                    loadCallback();
+                                                                                    QuestChart.instance.LoadChart(() => {
+                                                                                        loadCallback();
+                                                                                    });
                                                                                 });
                                                                             });
                                                                         });

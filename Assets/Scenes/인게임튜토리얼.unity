@@ -2303,17 +2303,17 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 17eab2e5feaf7534ab1f21ead6f3e3b2, type: 3}
-    m_FontSize: 23
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: "\uAC00\uB098\uB2E4\uB77C \uB9C8\uBC14\uC0AC"
 --- !u!222 &389832270
 CanvasRenderer:
@@ -2339,8 +2339,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -7.36, y: 49}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 186.42346, y: 140.49805}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &394988547
 MonoBehaviour:
@@ -8995,7 +8995,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Refeash
+  m_Text: Refresh
 --- !u!222 &1583950879
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11550,7 +11550,7 @@ RectTransform:
   m_GameObject: {fileID: 2069394542}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 1288452441}
   - {fileID: 1534426530}
@@ -11559,7 +11559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 183, y: 593}
+  m_AnchoredPosition: {x: 290, y: 666.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2076168264
@@ -65773,6 +65773,8 @@ MonoBehaviour:
   gachaResult: {fileID: 2624745396095317437}
   gachaBoxOpen: {fileID: 2624745397168707630}
   stageOpen: {fileID: 2624745396285339199}
+  btnAlram: {fileID: 0}
+  alram: {fileID: 0}
   tutorialBlackText: {fileID: 0}
   tutorialBlack: {fileID: 0}
   tutorialSpeech: {fileID: 2624745396877659112}

@@ -13,6 +13,8 @@ public class FoodManager : MonoBehaviour
 
     public Transform food;
     public Transform toolTransform;
+    public Transform five;
+    public Transform ten;
     int foodId = 0;
     int numberOfFood = 0;
     int count = 0;
@@ -24,11 +26,6 @@ public class FoodManager : MonoBehaviour
 
     void FoodSetting()
     {
-        for (int i = 0; i < food.childCount; i++)
-        {
-            food.GetChild(i).gameObject.SetActive(false);
-        }
-
         int recipeId = 0;
         switch (GameManager.instance.IngameType)
         {
@@ -45,10 +42,27 @@ public class FoodManager : MonoBehaviour
                 numberOfFood = StageChart.instance.GetStageChartInfo(GameManager.instance.currentStageId).NumberOfFood;
                 break;
         }
-        Debug.Log(recipeId);
         foodId = RecipeChart.instance.GetRecipeChartInfo(recipeId).LastFood;
         count = 0;
+
+        if (numberOfFood <= 5)
+        {
+            food = five;
+            five.gameObject.SetActive(true);
+            ten.gameObject.SetActive(false);
+        }
+        else
+        {
+            food = ten;
+            five.gameObject.SetActive(false);
+            ten.gameObject.SetActive(true);
+        }
+
         if (food.childCount < numberOfFood) numberOfFood = food.childCount;
+        for (int i = 0; i < food.childCount; i++)
+        {
+            food.GetChild(i).gameObject.SetActive(false);
+        }
 
         for (int i = 0; i < numberOfFood; i++)
         {

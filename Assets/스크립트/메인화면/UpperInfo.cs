@@ -52,10 +52,9 @@ public class UpperInfo : MonoBehaviour
             subTime = subTime.Subtract(timeSpanHeartCoolTime);
             saveTime = saveTime.Add(timeSpanHeartCoolTime);
 
-            UserInfo.instance.GetUserHeartInfo().numberOfHeart++;
-            if (UserInfo.instance.GetUserHeartInfo().numberOfHeart > maxHeart)
+            if (UserInfo.instance.GetUserHeartInfo().numberOfHeart < maxHeart)
             {
-                UserInfo.instance.GetUserHeartInfo().numberOfHeart = maxHeart;
+                UserInfo.instance.GetUserHeartInfo().numberOfHeart++;
             }
         }
 

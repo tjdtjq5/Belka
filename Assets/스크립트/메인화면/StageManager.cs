@@ -72,7 +72,7 @@ public class StageManager : MonoBehaviour
                 userStarCount += tempUserStageList[j].starCount;
             }
             pripab.transform.Find("fore").GetComponent<Image>().fillAmount = userStarCount / maxStarCount;
-            pripab.transform.Find("fore").GetChild(0).GetComponent<Text>().text = (int)(userStarCount / maxStarCount * 100) + "%";
+            pripab.transform.Find("fore").GetChild(0).GetComponent<Text>().text = ((int)(userStarCount / maxStarCount * 100) ) + "%";
 
             int siblingIndex = i + 1;
             pripab.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -175,6 +175,13 @@ public class StageManager : MonoBehaviour
     {
         if (coroutineFlag) return;
 
+        List<UserStageInfo> userStageGroupInfos = UserInfo.instance.UserStageGroupInfo(stageGroupID);
+        int userTotalStarCount = 0;
+        for (int i = 0; i < userStageGroupInfos.Count; i++)
+        {
+            userTotalStarCount += userStageGroupInfos[i].starCount;
+        }
+
         // 스테이지2프리팹의 정보 넣기 
         for (int j = 0; j < stagePripab02Transform.childCount; j++)
         {
@@ -203,7 +210,7 @@ public class StageManager : MonoBehaviour
                 stagePripab02Transform.GetChild(j).GetComponent<Button>().onClick.RemoveAllListeners();
                 stagePripab02Transform.GetChild(j).Find("일반잠금").gameObject.SetActive(false);
                 stagePripab02Transform.GetChild(j).Find("특수잠금").gameObject.SetActive(false);
-                if (StageChart.instance.GetStageChartInfo(stageGroupID, (j + 1)).ConditionCharacterID == CharacterType.없음) // 일반잠금 
+                if (StageChart.instance.GetStageChartInfo(stageGroupID, (j + 1)).ConditionCharacterID == CharacterType.없음 && StageChart.instance.GetStageChartInfo(stageGroupID, (j + 1)).ConditionStarCount == 0) // 일반잠금 
                 {
                     stagePripab02Transform.GetChild(j).Find("일반잠금").gameObject.SetActive(true);
 
@@ -225,7 +232,7 @@ public class StageManager : MonoBehaviour
                     stagePripab02Transform.GetChild(j).Find("특수잠금").gameObject.SetActive(true);
 
                     //특수잠금 해제
-                    if ((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)conditionCharacter] >= (int)conditionCharacterGrade  && conditionStarCount <= userStarCount02)
+                    if ((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)conditionCharacter] >= (int)conditionCharacterGrade  && conditionStarCount <= userTotalStarCount)
                     {
                         stagePripab02Transform.GetChild(j).Find("특수잠금").gameObject.SetActive(false);
                         stagePripab02Transform.GetChild(j).GetComponent<Button>().onClick.AddListener(() => {
@@ -234,6 +241,9 @@ public class StageManager : MonoBehaviour
                     }
                     else 
                     {
+                        stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").gameObject.SetActive(true);
+                        stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").gameObject.SetActive(true);
+
                         // 캐릭터 등급을 갖추었는가
                         if ((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)conditionCharacter] >= (int)conditionCharacterGrade)
                         {
@@ -246,7 +256,7 @@ public class StageManager : MonoBehaviour
                             stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").Find("토글체크").gameObject.SetActive(false);
                         }
                         // 별 갯수를 갖추었는가 
-                        if (conditionStarCount <= userStarCount02)
+                        if (conditionStarCount <= userTotalStarCount)
                         {
                             stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").GetComponent<Image>().sprite = conditionSucessSprite;
                             stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("토글체크").gameObject.SetActive(true);
@@ -259,8 +269,10 @@ public class StageManager : MonoBehaviour
 
                         stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").Find("설명").GetComponent<Text>().text = conditionCharacter.ToString();
                         stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").Find("등급이미지").GetComponent<Image>().sprite = gradeSpriteAtlas.GetSprite("Grade" + ((int)conditionCharacterGrade-1));
-                        if (conditionStarCount <= 0) stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "";
-                        else stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "별 " + conditionStarCount + "개";
+                        stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").Find("설명").GetComponent<Text>().text = "별 " + conditionStarCount + "개";
+                       
+                        if (conditionStarCount <= 0) stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건2").gameObject.SetActive(false);
+                        if (conditionCharacterGrade == GradeType.없음) stagePripab02Transform.GetChild(j).Find("특수잠금").Find("조건1").gameObject.SetActive(false);
                     }
 
 

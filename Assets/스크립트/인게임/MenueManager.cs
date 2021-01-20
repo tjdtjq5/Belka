@@ -34,13 +34,13 @@ public class MenueManager : MonoBehaviour
                 recipeID = RankingChart.instance.GetRankingChartChartInfo(rankingId).RecipeID;
                 Recipe(recipeID);
                 titleText.gameObject.SetActive(false);
-
                 break;
             case IngameType.캐릭터승급:
                 int stageGroupId02 = StageChart.instance.GetStageChartInfo(GameManager.instance.currentStageId).StageGroupId;
-                string stageText02 = StageGroupChart.instance.GetStageGroupChartInfo(stageGroupId02).stageName;
-                titleText.text = TextChart.instance.GetText(stageText02);
-                titleText.font = TextChart.instance.GetFont();
+             //   string stageText02 = StageGroupChart.instance.GetStageGroupChartInfo(stageGroupId02).stageName;
+            //    titleText.text = TextChart.instance.GetText(stageText02);
+             //   titleText.font = TextChart.instance.GetFont();
+                titleText.gameObject.SetActive(false);
                 recipeID = StageChart.instance.GetStageChartInfo(GameManager.instance.currentStageId).RecipeId;
                 Recipe(recipeID);
                 break;

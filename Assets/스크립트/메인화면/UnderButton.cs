@@ -16,43 +16,45 @@ public class UnderButton : MonoBehaviour
     public Transform characterBtn;
     public Transform stageBtn;
     public Transform rankingBtn;
+    public Transform questBtn;
 
     public Transform shopIcon;
     public Transform characterIcon;
     public Transform stageIcon;
     public Transform rankingIcon;
+    public Transform questIcon;
 
     static int index = 2;
 
     private void Start()
     {
         SoundManager.instance.LobbyBgmStart();
-
+        
         switch (index)
         {
             case 0:
                 SizeDeltaTrans(shopBtn);
                 pannel.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(ScreenSizeX * 2, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX * 2, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX * 2, pannel3.localPosition.y);
                 break;
             case 1:
                 SizeDeltaTrans(characterBtn);
                 pannel.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(ScreenSizeX, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(ScreenSizeX, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(ScreenSizeX, pannel3.localPosition.y);
                 break;
             case 2:
                 SizeDeltaTrans(stageBtn);
                 pannel.localPosition = new Vector2(0, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(0, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(0, pannel.localPosition.y);
+                pannel2.localPosition = new Vector2(0, pannel2.localPosition.y);
+                pannel3.localPosition = new Vector2(0, pannel3.localPosition.y);
                 break;
             case 3:
-                SizeDeltaTrans(rankingBtn);
-                pannel.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
-                pannel2.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
-                pannel3.localPosition = new Vector2(-ScreenSizeX * 2, pannel.localPosition.y);
+                OnClickRanking();
+                break;
+            case 4:
+                OnClickQuest();
                 break;
         }
     }
@@ -106,6 +108,18 @@ public class UnderButton : MonoBehaviour
         pannel2.DOLocalMoveX(-ScreenSizeX, tweenSpeed);
         pannel3.DOLocalMoveX(-ScreenSizeX, tweenSpeed);
     }
+    public void OnClickQuest()
+    {
+        if (Tutorial02Manager.instance.tutorialFlag && Tutorial02Manager.instance.underBtnFlag != 4)
+        {
+            return;
+        }
+        index = 4;
+        SizeDeltaTrans(questBtn);
+        pannel.DOLocalMoveX(-ScreenSizeX * 2, tweenSpeed);
+        pannel2.DOLocalMoveX(-ScreenSizeX * 2, tweenSpeed);
+        pannel3.DOLocalMoveX(-ScreenSizeX * 2, tweenSpeed);
+    }
 
 
     void LeftDrag()
@@ -129,6 +143,9 @@ public class UnderButton : MonoBehaviour
             case 3:
                 OnClickRanking();
                 break;
+            case 4:
+                OnClickQuest();
+                break;
         }
     }
     void RightDrag()
@@ -151,6 +168,9 @@ public class UnderButton : MonoBehaviour
                 break;
             case 3:
                 OnClickRanking();
+                break;
+            case 4:
+                OnClickQuest();
                 break;
         }
     }
@@ -208,8 +228,8 @@ public class UnderButton : MonoBehaviour
 
     public void SizeDeltaTrans(Transform sizeUpBtn)
     {
-        Vector2 originSize = new Vector2(216, 220);
-        Vector2 upSize = new Vector2(432, 220);
+        Vector2 originSize = new Vector2(180, 220);
+        Vector2 upSize = new Vector2(360, 220);
 
         Vector2 originScalie = new Vector2(1.6f, 1.6f);
         Vector2 upScalie = new Vector2(2, 2);
@@ -262,6 +282,18 @@ public class UnderButton : MonoBehaviour
             rankingBtn.GetComponent<RectTransform>().DOSizeDelta(originSize, tweenSpeed);
             rankingIcon.DOScale(originScalie, tweenSpeed);
             rankingIcon.GetComponent<Image>().color = Color.gray;
+        }
+        if (sizeUpBtn == questBtn)
+        {
+            questBtn.GetComponent<RectTransform>().DOSizeDelta(upSize, tweenSpeed);
+            questIcon.DOScale(upScalie, tweenSpeed);
+            questIcon.GetComponent<Image>().color = Color.white;
+        }
+        else
+        {
+            questBtn.GetComponent<RectTransform>().DOSizeDelta(originSize, tweenSpeed);
+            questIcon.DOScale(originScalie, tweenSpeed);
+            questIcon.GetComponent<Image>().color = Color.gray;
         }
     }
 }

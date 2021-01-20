@@ -54,6 +54,11 @@ public class Puzzle : MonoBehaviour
     {
         if (this.transform.GetChild(0).gameObject.activeSelf)
         {
+            if (prepab != null)
+            {
+                Destroy(prepab);
+                prepab = null;
+            }
             this.transform.GetChild(0).gameObject.SetActive(false);
             pointDownFlag = true;
             prepab = Resources.Load<GameObject>("프리팹/이미지프리팹") as GameObject;

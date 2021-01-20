@@ -170,6 +170,7 @@
     <Compile Include="Assets\스크립트\로비\ItemChart.cs" />
     <Compile Include="Assets\스크립트\로비\ItemUpgradeChart.cs" />
     <Compile Include="Assets\스크립트\로비\LobbyLoding.cs" />
+    <Compile Include="Assets\스크립트\로비\QuestChart.cs" />
     <Compile Include="Assets\스크립트\로비\RankingChart.cs" />
     <Compile Include="Assets\스크립트\로비\RankingManager.cs" />
     <Compile Include="Assets\스크립트\로비\RankingRewardChart.cs" />

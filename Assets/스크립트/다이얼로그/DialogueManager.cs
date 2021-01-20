@@ -40,7 +40,6 @@ public class DialogueManager : MonoBehaviour
         this.dialogueID = dialogueID;
         this.callback = callback;
         dialogChartInfos = DialogChart.instance.GetDialogChartInfos(dialogueID);
-        Debug.Log(dialogueID);
         step = 0;
         character01.DOFade(0, 0);
         character02.DOFade(0, 0);

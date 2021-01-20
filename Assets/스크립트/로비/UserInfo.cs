@@ -15,7 +15,14 @@ public class UserInfo : MonoBehaviour
     int userCrystal;
     UserCharacterInfo userCharacterInfo = new UserCharacterInfo();
     List<UserItemInfo> userItemInfos = new List<UserItemInfo>();
-
+    [ContextMenu("test")]
+    public void Test()
+    {
+        for (int i = 0; i < userStageInfos.Count; i++)
+        {
+            Debug.Log("스테이지 id  :  " + userStageInfos[i].stageId);
+        }
+    }
     [Obsolete]
     public void AllLoadUserInfo(System.Action loadCallback)
     {
@@ -50,6 +57,7 @@ public class UserInfo : MonoBehaviour
         userStageInfos.Clear();
         BackendGameInfo.instance.GetPrivateContents("UserInfo", "Stage", () =>
         {
+            
             for (int i = 0; i < BackendGameInfo.instance.serverDataList.Count; i++)
             {
                 string[] data = BackendGameInfo.instance.serverDataList[i].Split('-');
@@ -59,9 +67,8 @@ public class UserInfo : MonoBehaviour
                 int starCount = int.Parse(data[2]);
 
                 userStageInfos.Add(new UserStageInfo(stageId, clearTime, starCount));
-
-                loadCallback();
             }
+            loadCallback();
         }, () => {
             loadCallback();
         });
@@ -130,6 +137,7 @@ public class UserInfo : MonoBehaviour
             loadCallback();
         }, () => {
             userHeartInfo = new UserHeartInfo();
+            userHeartInfo.numberOfHeart = 999;
             SaveUserHeartInfo(() => { loadCallback(); });
         });
     }
@@ -161,7 +169,7 @@ public class UserInfo : MonoBehaviour
             userCrystal = int.Parse(data);
             loadCallback();
         }, () => {
-            userCrystal = 1000000;
+            userCrystal = 99999;
             SaveUserCrystal(() => { loadCallback(); });
         });
     }
@@ -253,8 +261,11 @@ public class UserInfo : MonoBehaviour
                 loadCallback();
             }
         }, () => {
-            PutUserItem(111, 200);
-            PutUserItem(214, 100);
+            PutUserItem(211, 10);
+            PutUserItem(212, 10);
+            PutUserItem(213, 10);
+            PutUserItem(214, 10);
+            PutUserItem(215, 10);
             SaveUserItemInfo(() => { loadCallback(); });
         });
     }
@@ -338,7 +349,26 @@ public class UserInfo : MonoBehaviour
             PlayerPrefs.SetInt(key, ConfigChart.instance.configChartInfo.RankingDailyCount - 1);
         }
     }
+
+    /// === 퀘스트 === ///
+    // 1. 이벤트 퀘스트
+
+    public List<UserEventQuest> userEventQuests = new List<UserEventQuest>();
+    public UserEventQuest GetUserEventQuestInfo(int ID)
+    {
+        for (int i = 0; i < userEventQuests.Count; i++)
+        {
+            if (userEventQuests[i].ID == ID)
+            {
+                return userEventQuests[i];
+            }
+        }
+        UserEventQuest temp = new UserEventQuest(ID, 0, false);
+        userEventQuests.Add(temp);
+        return temp;
+    } // 퀘스트 정보 가져오기
 }
+
 public class UserStageInfo
 {
     public int stageId;
@@ -410,4 +440,25 @@ public class UserItemInfo
         this.itemId = itemId;
         this.numberOfItem = numberOfItem;
     }
+}
+public class UserEventQuest
+{
+    public int ID;
+    public int clearCount;
+    public bool isComplete;
+
+    public UserEventQuest(int ID, int clearCount, bool isComplete)
+    {
+        this.ID = ID;
+        this.clearCount = clearCount;
+        this.isComplete = isComplete;
+    }
+}
+public class UserDayQuest
+{
+
+}
+public class UserAchiveQuest
+{
+
 }

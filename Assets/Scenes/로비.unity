@@ -465,6 +465,7 @@ GameObject:
   - component: {fileID: 64067774}
   - component: {fileID: 64067792}
   - component: {fileID: 64067793}
+  - component: {fileID: 64067794}
   m_Layer: 0
   m_Name: ChartManager
   m_TagString: Untagged
@@ -555,7 +556,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06e66bef97a37448850944265601abc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: 9760
+  field: 12472
   toolChartInfos: []
 --- !u!114 &64067778
 MonoBehaviour:
@@ -569,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeeebc7122143784a95791fd1b22eaf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: 11414
+  field: 12538
   koFont: {fileID: 12800000, guid: 6d1ac0e27191c7a4988c2ecbe23c0c16, type: 3}
   enFont: {fileID: 12800000, guid: 1ce6d51efb6261246a6daab0b0c23425, type: 3}
   textChartInfos: []
@@ -586,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a202304c0978df34d855e3da3ab17aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: 12290
+  field: 12471
   stageChartInfos: []
   stageGuideSpriteAtlas: {fileID: 4343727234628468602, guid: a55acfefdc8345d479b0de064a75d8fb,
     type: 2}
@@ -740,7 +741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dafa1ef4f6479f24baff491e15c8a26b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  field: 11431
+  field: 12470
   dialogChartInfos: []
   BGSpriteAtlas: {fileID: 4343727234628468602, guid: be0c6500da6ae56418f0c47a272f51ee,
     type: 2}
@@ -804,6 +805,20 @@ MonoBehaviour:
   StageAtlas: {fileID: 4343727234628468602, guid: 7e80c47f96231b143b5dd2fa06e0cb30,
     type: 2}
   stageGroupChartInfos: []
+--- !u!114 &64067794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64067772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 489c9b4d8166db54585fb7554feeb2f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  field: 13584
+  questChartInfos: []
 --- !u!1 &157391531
 GameObject:
   m_ObjectHideFlags: 0
@@ -912,7 +927,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00024414062}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &543969871
@@ -2535,7 +2550,7 @@ Camera:
   m_GameObject: {fileID: 2081366854}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
