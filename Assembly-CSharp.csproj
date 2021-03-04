@@ -22,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_2019_4_3;UNITY_2019_4;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;UNITY_ASTC_ONLY_DECOMPRESS;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_4_6;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_2019_4_3;UNITY_2019_4;UNITY_2019;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_INCLUDE_TESTS;ENABLE_AR;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_EVENT_QUEUE;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_TEXTURE_STREAMING;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_VR;ENABLE_WEBCAM;ENABLE_UNITYWEBREQUEST;ENABLE_WWW;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_NATIVE_CRASH_REPORTING;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;ENABLE_MANAGED_AUDIO_JOBS;ENABLE_RUNTIME_PERMISSIONS;ENABLE_ENGINE_CODE_STRIPPING;ENABLE_ONSCREEN_KEYBOARD;INCLUDE_DYNAMIC_GI;ENABLE_MONO_BDWGC;ENABLE_SCRIPTING_GC_WBARRIERS;PLATFORM_SUPPORTS_MONO;ENABLE_VIDEO;PLATFORM_ANDROID;UNITY_ANDROID;UNITY_ANDROID_API;ENABLE_EGL;ENABLE_NETWORK;ENABLE_RUNTIME_GI;ENABLE_CRUNCH_TEXTURE_COMPRESSION;PLATFORM_SUPPORTS_ADS_ID;UNITY_CAN_SHOW_SPLASH_SCREEN;UNITY_HAS_GOOGLEVR;UNITY_HAS_TANGO;ENABLE_SPATIALTRACKING;UNITY_ASTC_ONLY_DECOMPRESS;ENABLE_UNITYADS_RUNTIME;UNITY_UNITYADS_API;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_DIRECTOR;ENABLE_LOCALIZATION;ENABLE_SPRITES;ENABLE_TERRAIN;ENABLE_TILEMAP;ENABLE_TIMELINE;ENABLE_LEGACY_INPUT_MANAGER;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -63,6 +63,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\ConsoleBase.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\LogView.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\MenuBase.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AccessTokenMenu.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppEvents.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppLinks.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\AppRequests.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\DialogShare.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\GraphRequest.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\MainMenu.cs" />
+    <Compile Include="Assets\FacebookSDK\Examples\Scripts\SubMenus\Pay.cs" />
     <Compile Include="Assets\GPGSIds.cs" />
     <Compile Include="Assets\GooglePlayGames\BasicApi\Achievement.cs" />
     <Compile Include="Assets\GooglePlayGames\BasicApi\CommonStatusCodes.cs" />
@@ -152,6 +163,7 @@
     <Compile Include="Assets\스크립트\GoogleAdsManager.cs" />
     <Compile Include="Assets\스크립트\ParticleDestroy.cs" />
     <Compile Include="Assets\스크립트\다이얼로그\DialogueManager.cs" />
+    <Compile Include="Assets\스크립트\로비\AttendanceChart.cs" />
     <Compile Include="Assets\스크립트\로비\BackEndChat.cs" />
     <Compile Include="Assets\스크립트\로비\BackendGameInfo.cs" />
     <Compile Include="Assets\스크립트\로비\BackendInitial.cs" />
@@ -160,6 +172,7 @@
     <Compile Include="Assets\스크립트\로비\ChartManager.cs" />
     <Compile Include="Assets\스크립트\로비\CombinationChart.cs" />
     <Compile Include="Assets\스크립트\로비\ConfigChart.cs" />
+    <Compile Include="Assets\스크립트\로비\CurrentTime.cs" />
     <Compile Include="Assets\스크립트\로비\DialogChart.cs" />
     <Compile Include="Assets\스크립트\로비\EnumManager.cs" />
     <Compile Include="Assets\스크립트\로비\FoodChart.cs" />
@@ -182,6 +195,7 @@
     <Compile Include="Assets\스크립트\로비\TextChart.cs" />
     <Compile Include="Assets\스크립트\로비\ToolChart.cs" />
     <Compile Include="Assets\스크립트\로비\UserInfo.cs" />
+    <Compile Include="Assets\스크립트\메인화면\AttendanceManager.cs" />
     <Compile Include="Assets\스크립트\메인화면\Audit.cs" />
     <Compile Include="Assets\스크립트\메인화면\AuditEnhance.cs" />
     <Compile Include="Assets\스크립트\메인화면\Bag.cs" />
@@ -192,6 +206,8 @@
     <Compile Include="Assets\스크립트\메인화면\Piece.cs" />
     <Compile Include="Assets\스크립트\메인화면\PieceAssosiation.cs" />
     <Compile Include="Assets\스크립트\메인화면\PopupManager.cs" />
+    <Compile Include="Assets\스크립트\메인화면\QuestManager.cs" />
+    <Compile Include="Assets\스크립트\메인화면\QuestRewardResult.cs" />
     <Compile Include="Assets\스크립트\메인화면\RankingPannel.cs" />
     <Compile Include="Assets\스크립트\메인화면\RankingScore.cs" />
     <Compile Include="Assets\스크립트\메인화면\Setting.cs" />
@@ -217,6 +233,7 @@
     <Compile Include="Assets\스크립트\튜토리얼\TutorialPuzzle02.cs" />
     <Compile Include="Assets\스크립트\튜토리얼\TutorialToolManager.cs" />
     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
+    <None Include="Assets\FacebookSDK\link.xml" />
     <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX Free.txt" />
     <None Include="Assets\리소스\이펙트\AllIn1SpriteShader\Resources\AllIn1SpriteShader.shader" />
     <None Include="Assets\리소스\이펙트\AllIn1SpriteShader\Resources\AllIn1SpriteShaderUnscaledTime.shader" />
@@ -403,6 +420,18 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/UnityWorkspace/2019.4.3f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/FacebookSDK/Plugins/Facebook.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Gameroom">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/FacebookSDK/Plugins/Gameroom/Facebook.Unity.Gameroom.dll</HintPath>
+    </Reference>
+    <Reference Include="FacebookNamedPipeClient">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/FacebookSDK/Plugins/Gameroom/FacebookNamedPipeClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook.Unity.Settings">
+      <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/FacebookSDK/Plugins/Settings/Facebook.Unity.Settings.dll</HintPath>
     </Reference>
     <Reference Include="DemiLib">
       <HintPath>C:/Users/tjdtj/OneDrive/Documents/Belka/Belka2/Assets/Plugins/Demigiant/DemiLib/Core/DemiLib.dll</HintPath>

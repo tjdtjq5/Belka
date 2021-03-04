@@ -1,0 +1,8 @@
+-keep class com.google.android.gms.**{*;}
+-keep class com.google.games.bridge.**{*;}
+-keep class com.facebook.unity.FB
+-keep class com.facebook.unity.**{*;}
+-keep class com.facebook.internal.**{*;}
+-keep class io.thebackend.unity.**{*;}
+-keep class BackEnd.**{*;}
+-keepattributes Signature

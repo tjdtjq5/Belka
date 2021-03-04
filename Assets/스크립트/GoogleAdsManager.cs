@@ -95,6 +95,12 @@ public class GoogleAdsManager : MonoBehaviour
     public void HandleRewardBasedVideoRewarded(object sender, Reward args)
     {
         GameManager.instance.UserItemReward(rewardType, rewardItem, rewardCount);
+        UserInfo.instance.SaveUserCrystal(() => {
+            UserInfo.instance.SaveUserHeartInfo(() => {
+                UserInfo.instance.SaveUserItemInfo(() => {
+                });
+            });
+        });
     }
 
     public void HandleRewardBasedVideoLeftApplication(object sender, EventArgs args)

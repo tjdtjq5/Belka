@@ -42,7 +42,9 @@ public class CharacterUpgarde : MonoBehaviour
                 {
                     UserInfo.instance.PullUserHeart(characterUpgradeChartInfo.HeartCount);
                     UserInfo.instance.SaveUserHeartInfo(() => {
-                        GameManager.instance.CharacterUpgradeGameStart(characterUpgradeChartInfo.StageId, characterType);
+                        UserInfo.instance.SaveUserQuest(() => {
+                            GameManager.instance.CharacterUpgradeGameStart(characterUpgradeChartInfo.StageId, characterType);
+                        });
                     });
                 }
                 else

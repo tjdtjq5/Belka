@@ -18,9 +18,9 @@ public class UserInfo : MonoBehaviour
     [ContextMenu("test")]
     public void Test()
     {
-        for (int i = 0; i < userStageInfos.Count; i++)
+        for (int i = 0; i < userQuests.Count; i++)
         {
-            Debug.Log("스테이지 id  :  " + userStageInfos[i].stageId);
+            Debug.Log(userQuests[i].ID + "  " + userQuests[i].isComplete);
         }
     }
     [Obsolete]
@@ -30,8 +30,13 @@ public class UserInfo : MonoBehaviour
             LoadUserHeartInfo(() => {
                 LoadUserCrystal(() => {
                     LoadUserCharacterInfo(() => {
-                        LoadUserItemInfo(() => {                 
-                        loadCallback();  });
+                        LoadUserItemInfo(() => {
+                            LoadUserQuest(() => {
+                                LoadUserAttendance(() => {
+                                    loadCallback();
+                                });
+                            });
+                     ;  });
                     });
                 });
             });
@@ -152,6 +157,26 @@ public class UserInfo : MonoBehaviour
     public void PullUserHeart(int heart)
     {
         userHeartInfo.Pull(heart);
+
+        DateTime currentTime = CurrentTime.instance.currentTime;
+        QuestChartInfo[] questChartInfoList = QuestChart.instance.questChartInfos;
+
+        for (int i = 0; i < userQuests.Count; i++)
+        {
+            QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(userQuests[i].ID);
+            if (questChartInfo != null)
+            {
+                if (questChartInfo.QuestCondition == "HeartCount")
+                {
+                    userQuests[i].clearTime = currentTime;
+                    userQuests[i].clearCount += heart;
+                    if (questChartInfo.QuestCount < userQuests[i].clearCount)
+                    {
+                        userQuests[i].clearCount = questChartInfo.QuestCount;
+                    }
+                }
+            }
+        }
     }
     // 크리트탈 정보 : 유저가 가지고 있는 크리스탈 개수
     public void SaveUserCrystal(System.Action saveCallback)
@@ -184,6 +209,26 @@ public class UserInfo : MonoBehaviour
     public void PullUserCrystal(int crystal)
     {
         userCrystal -= crystal;
+
+        DateTime currentTime = CurrentTime.instance.currentTime;
+        QuestChartInfo[] questChartInfoList = QuestChart.instance.questChartInfos;
+
+        for (int i = 0; i < userQuests.Count; i++)
+        {
+            QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(userQuests[i].ID);
+            if (questChartInfo != null)
+            {
+                if (questChartInfo.QuestCondition == "DiaCount")
+                {
+                    userQuests[i].clearTime = currentTime;
+                    userQuests[i].clearCount += crystal;
+                    if (questChartInfo.QuestCount < userQuests[i].clearCount)
+                    {
+                        userQuests[i].clearCount = questChartInfo.QuestCount;
+                    }
+                }
+            }
+        }
     }
     // 캐릭터 정보 : 장착중인 캐릭터, 각 캐릭터의 등급
     public void SaveUserCharacterInfo(System.Action saveCallback)
@@ -257,9 +302,8 @@ public class UserInfo : MonoBehaviour
                 int numberOfItem = int.Parse(data[1]);
 
                 userItemInfos.Add(new UserItemInfo(itemId, numberOfItem));
-
-                loadCallback();
             }
+            loadCallback();
         }, () => {
             PutUserItem(211, 10);
             PutUserItem(212, 10);
@@ -351,22 +395,203 @@ public class UserInfo : MonoBehaviour
     }
 
     /// === 퀘스트 === ///
-    // 1. 이벤트 퀘스트
-
-    public List<UserEventQuest> userEventQuests = new List<UserEventQuest>();
-    public UserEventQuest GetUserEventQuestInfo(int ID)
+    //  퀘스트
+    public List<UserQuest> userQuests = new List<UserQuest>();
+    public UserQuest GetUserQuestInfo(int ID)
     {
-        for (int i = 0; i < userEventQuests.Count; i++)
+        DateTime currentTime = CurrentTime.instance.currentTime;
+        UserQuest temp = new UserQuest(ID, 0, currentTime, false);
+
+        QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(ID);
+        if (questChartInfo == null) return null;
+
+        for (int i = 0; i < userQuests.Count; i++)
         {
-            if (userEventQuests[i].ID == ID)
+            if (userQuests[i].ID == ID)
             {
-                return userEventQuests[i];
+                if (questChartInfo.Category == 1)
+                {
+                    if (userQuests[i].clearTime.Year == currentTime.Year && userQuests[i].clearTime.Month == currentTime.Month && userQuests[i].clearTime.Day == currentTime.Day)
+                    {
+                        return userQuests[i];
+                    }
+                    else
+                    {
+                        userQuests[i] = temp;
+                        return temp;
+                    }
+                }
+                else
+                {
+                    return userQuests[i];
+                }
             }
         }
-        UserEventQuest temp = new UserEventQuest(ID, 0, false);
-        userEventQuests.Add(temp);
+
+        userQuests.Add(temp);
         return temp;
-    } // 퀘스트 정보 가져오기
+    } // 해당 id의 퀘스트 정보를 가져온다.
+    public void ClearUserQuest(string questCondition, int questCondition2 = 0)
+    {
+        DateTime currentTime = CurrentTime.instance.currentTime;
+        QuestChartInfo[] questChartInfoList = QuestChart.instance.questChartInfos;
+        /*
+        for (int i = 0; i < questChartInfoList.Length; i++)
+        {
+            GetUserQuestInfo(questChartInfoList[i].QuestID);
+        }
+        */
+     
+        for (int i = 0; i < userQuests.Count; i++)
+        {
+            QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(userQuests[i].ID);
+            if (questChartInfo!= null)
+            {
+                if (questChartInfo.QuestCondition == questCondition)
+                {
+                    if (questChartInfo.QuestCondition2 == questCondition2 || questChartInfo.QuestCondition2 == 0)
+                    {
+                        userQuests[i].clearTime = currentTime;
+                        userQuests[i].clearCount++;
+                        if (questChartInfo.QuestCount < userQuests[i].clearCount)
+                        {
+                            userQuests[i].clearCount = questChartInfo.QuestCount;
+                        }
+                    }
+                }
+            }
+        }
+    } // 해당 퀘스트 상태 모두 클리어 1 ++ 
+    public void CompleteUserQuest(int ID)
+    {
+        for (int i = 0; i < userQuests.Count; i++)
+        {
+            if (userQuests[i].ID == ID)
+            {
+                userQuests[i].isComplete = true;
+            }
+        }
+    }  // 해당 id 퀘스트 보상받기 완료
+    public void SaveUserQuest(System.Action callback)
+    {
+        Param param = new Param();
+        List<string> dataList = new List<string>();
+        for (int i = 0; i < userQuests.Count; i++)
+        {
+            int ID = userQuests[i].ID;
+            int clearCount = userQuests[i].clearCount;
+            DateTime clearTime = userQuests[i].clearTime;
+            bool isComplete = userQuests[i].isComplete;
+            dataList.Add(ID + "=" + clearCount + "=" + clearTime.ToString() + "=" + isComplete.ToString());
+        }
+        param.Add("Quest", dataList);
+        BackendGameInfo.instance.PrivateTableUpdate("Quest", param, () => { callback(); });
+    }
+    public void LoadUserQuest(System.Action callback)
+    {
+        userQuests.Clear();
+        BackendGameInfo.instance.GetPrivateContents("Quest", "Quest", () =>
+        {
+            for (int i = 0; i < BackendGameInfo.instance.serverDataList.Count; i++)
+            {
+                string[] data = BackendGameInfo.instance.serverDataList[i].Split('=');
+
+                int ID = int.Parse(data[0]);
+                int clearCount = int.Parse(data[1]);
+                DateTime clearTime = DateTime.Parse(data[2]);
+                bool isComplete = bool.Parse(data[3]);
+
+                userQuests.Add(new UserQuest(ID, clearCount, clearTime, isComplete));
+            }
+            callback();
+        }, () => {
+            QuestChartInfo[] quest = QuestChart.instance.questChartInfos;
+            for (int i = 0; i < quest.Length; i++)
+            {
+                userQuests.Add(new UserQuest(quest[i].QuestID, 0, CurrentTime.instance.currentTime, false));
+            }
+            callback();
+        });
+    }
+
+    /// === 출석 === ///
+    public List<UserAttendance> userAttendances = new List<UserAttendance>();
+    public UserAttendance GetUserAttendance(int ID)
+    {
+        for (int i = 0; i < userAttendances.Count; i++)
+        {
+            if (userAttendances[i].ID == ID)
+            {
+                return userAttendances[i];
+            }
+        }
+        return null;
+    }
+    public void SetAttendance(int ID) // 출석체크
+    {
+        int type = AttendanceChart.instance.GetAttendanceInfo(ID).Type;
+        UserAttendance userAttendance = GetUserAttendance(ID);
+        DateTime currentTime = CurrentTime.instance.currentTime;
+
+        if (userAttendance == null)
+        {
+            userAttendances.Add(new UserAttendance(ID, currentTime, 0));
+            return;
+        }
+
+        GetUserAttendance(ID).attendanceTime = currentTime;
+
+        switch (type)
+        {
+            case 1:
+                if (userAttendance.count >= 6)
+                {
+                    GetUserAttendance(ID).count = 0;
+                }
+                else
+                {
+                    GetUserAttendance(ID).count++;
+                }
+                break;
+            case 2:
+                GetUserAttendance(ID).count++;
+                break;
+        }
+    }
+    public void SaveUserAttendance(System.Action callback)
+    {
+        Param param = new Param();
+        List<string> dataList = new List<string>();
+        for (int i = 0; i < userAttendances.Count; i++)
+        {
+            int ID = userAttendances[i].ID;
+            DateTime attendanceTime = userAttendances[i].attendanceTime;
+            int count = userAttendances[i].count;
+            dataList.Add(ID + "=" + attendanceTime.ToString() + "=" + count);
+        }
+        param.Add("Attendance", dataList);
+        BackendGameInfo.instance.PrivateTableUpdate("Attendance", param, () => { callback(); });
+    }
+    public void LoadUserAttendance(System.Action callback)
+    {
+        userAttendances.Clear();
+    
+        BackendGameInfo.instance.GetPrivateContents("Attendance", "Attendance", () =>
+        {
+            for (int i = 0; i < BackendGameInfo.instance.serverDataList.Count; i++)
+            {
+                string[] data = BackendGameInfo.instance.serverDataList[i].Split('=');
+
+                int ID = int.Parse(data[0]);
+                DateTime attendanceTime = DateTime.Parse(data[1]);
+                int count = int.Parse(data[2]);
+                userAttendances.Add(new UserAttendance(ID, attendanceTime,count));
+            }
+            callback();
+        }, () => {
+            callback();
+        });
+    }
 }
 
 public class UserStageInfo
@@ -441,24 +666,31 @@ public class UserItemInfo
         this.numberOfItem = numberOfItem;
     }
 }
-public class UserEventQuest
+public class UserQuest
 {
     public int ID;
     public int clearCount;
+    public DateTime clearTime = new DateTime();
     public bool isComplete;
 
-    public UserEventQuest(int ID, int clearCount, bool isComplete)
+    public UserQuest(int ID, int clearCount, DateTime clearTime ,bool isComplete)
     {
         this.ID = ID;
         this.clearCount = clearCount;
+        this.clearTime = clearTime;
         this.isComplete = isComplete;
     }
 }
-public class UserDayQuest
+public class UserAttendance
 {
+    public int ID;
+    public DateTime attendanceTime = new DateTime();
+    public int count;
 
-}
-public class UserAchiveQuest
-{
-
+    public UserAttendance(int ID, DateTime attendanceTime, int count)
+    {
+        this.ID = ID;
+        this.attendanceTime = attendanceTime;
+        this.count = count;
+    }
 }

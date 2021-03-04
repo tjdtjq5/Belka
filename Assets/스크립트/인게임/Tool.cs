@@ -149,34 +149,28 @@ public class Tool : MonoBehaviour
 
         while (foreGuage.fillAmount < 1)
         {
+
+            if (foreGuage.fillAmount < 0.5f) 
+            {
+                foreGuage.color = Color.yellow;
+            }
+            else 
+            {
+                foreGuage.color = Color.green;
+            }
+
             yield return TimeManager.instance.waitTime;
             nextTime = TimeManager.instance.readTime;
             foreGuage.fillAmount = (nextTime - currentTime) / collTime;
         }
 
-        foreGuage.fillAmount = 0;
-        materialSetList.Clear();
-        for (int i = 0; i < this.transform.Find("상단").childCount; i++)
-        {
-            if (this.transform.Find("상단").GetChild(i).GetChild(0).GetComponent<Image>().color == Color.white)
-            {
-                this.transform.Find("상단").GetChild(i).GetComponent<Image>().color = Color.white;
-            }
-        }
-        // 준재료에 넣기 
-        if (SceneManager.GetActiveScene().name == "인게임")
-        {
-            Material02Manager.instance.MaterialSet(childNumber, finishFoodId);
-        }
+        foreGuage.fillAmount = 1;
 
-        if (SceneManager.GetActiveScene().name == "인게임튜토리얼")
-        {
-            TutorialMaterial02Manager.instance.MaterialSet(childNumber, finishFoodId);
-            TutorialManager.instance.NextStep();
-        }
+        // 도구 초기화 
+        InitTool();
 
-        putSetAudioSource.Stop();
-        this.GetComponent<Animator>().SetBool("isPlay", false);
+        /*/ 음식 놓기 
+        SetMetarial(childNumber, finishFoodId); */
     }
 
     IEnumerator ShakeCoroutine()
@@ -214,5 +208,56 @@ public class Tool : MonoBehaviour
     {
         putlnAudioSource.Stop();
         putSetAudioSource.Stop();
+    }
+
+    // 도구로 음식을 만드는데 성공
+    void SetMetarial(int childNumber, int foodId)
+    {
+        // 준재료에 넣기 
+        if (SceneManager.GetActiveScene().name == "인게임")
+        {
+            Material02Manager.instance.MaterialSet(childNumber, foodId);
+        }
+
+        if (SceneManager.GetActiveScene().name == "인게임튜토리얼")
+        {
+            TutorialMaterial02Manager.instance.MaterialSet(childNumber, foodId);
+            TutorialManager.instance.NextStep();
+        }
+    }
+    // 도구 초기화 
+    void InitTool()
+    {
+        if (toolCoroutine != null) StopCoroutine(toolCoroutine);
+
+        // 초기화 
+        foreGuage.fillAmount = 0;
+        materialSetList.Clear();
+        for (int i = 0; i < this.transform.Find("상단").childCount; i++)
+        {
+            if (this.transform.Find("상단").GetChild(i).GetChild(0).GetComponent<Image>().color == Color.white)
+            {
+                this.transform.Find("상단").GetChild(i).GetComponent<Image>().color = Color.white;
+            }
+        }
+
+        // 음향 , 애니 
+        putSetAudioSource.Stop();
+        this.GetComponent<Animator>().SetBool("isPlay", false);
+    }
+
+    public void TouchTool()
+    {
+        if (foreGuage.fillAmount == 0 || foreGuage.fillAmount == 1) return;
+
+        if (foreGuage.fillAmount < 0.5f) // 실패 
+        {
+            InitTool();
+        }
+        else // 성공 
+        {
+            SetMetarial(childNumber, finishFoodId);
+            InitTool();
+        }
     }
 }

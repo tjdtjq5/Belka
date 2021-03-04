@@ -13,7 +13,7 @@ public class QuestChart : MonoBehaviour
     public static QuestChart instance;
     private void Awake() { instance = this; }
 
-    [SerializeField] QuestChartInfo[] questChartInfos;
+    [SerializeField] public QuestChartInfo[] questChartInfos;
 
     public QuestChartInfo GetQuestChartInfo(int ID)
     {
@@ -21,30 +21,52 @@ public class QuestChart : MonoBehaviour
         {
             if (questChartInfos[i].QuestID == ID)
             {
-                return questChartInfos[i];
+                TimeSpan startTimeSpan = new TimeSpan(questChartInfos[i].StartTime.Ticks);
+                TimeSpan endTimeSpan = new TimeSpan(questChartInfos[i].EndTime.Ticks);
+                TimeSpan currentTimeSpan = new TimeSpan(CurrentTime.instance.currentTime.Ticks);
+
+                if (endTimeSpan.TotalSeconds == 0)
+                {
+                    return questChartInfos[i];
+                }
+                else
+                {
+                    if (startTimeSpan < currentTimeSpan && currentTimeSpan < endTimeSpan)
+                    {
+                        return questChartInfos[i];
+                    }
+                }
+                return null;
             }
         }
         return null;
     }
     public List<QuestChartInfo> GetCategoryQuest(int category)
     {
-        int sort = 0;
+        int sort = 1;
+        TimeSpan currentTimeSpan = new TimeSpan(CurrentTime.instance.currentTime.Ticks);
         List<QuestChartInfo> temp = new List<QuestChartInfo>();
-        while (true)
+
+        for (int i = 0; i < questChartInfos.Length; i++)
         {
-            bool flag = false;
-            for (int i = 0; i < questChartInfos.Length; i++)
+            if (questChartInfos[i].Category == category && questChartInfos[i].Sorting == sort)
             {
-                if (questChartInfos[i].Category == category && questChartInfos[i].Sorting == sort)
+                TimeSpan startTimeSpan = new TimeSpan(questChartInfos[i].StartTime.Ticks);
+                TimeSpan endTimeSpan = new TimeSpan(questChartInfos[i].EndTime.Ticks);
+
+                if (endTimeSpan.TotalSeconds == 0)
                 {
-                    flag = true;
                     sort++;
                     temp.Add(questChartInfos[i]);
                 }
-            }
-            if (!flag)
-            {
-                break;
+                else
+                {
+                    if (startTimeSpan < currentTimeSpan && currentTimeSpan < endTimeSpan)
+                    {
+                        sort++;
+                        temp.Add(questChartInfos[i]);
+                    }
+                }
             }
         }
         return temp;
@@ -68,6 +90,7 @@ public class QuestChart : MonoBehaviour
                 if (rowData["QuestName"]["S"].ToString() != "null") questChartInfos[i].QuestName = rowData["QuestName"]["S"].ToString();
                 if (rowData["QuestCondition"]["S"].ToString() != "null") questChartInfos[i].QuestCondition = rowData["QuestCondition"]["S"].ToString();
                 if (rowData["QuestCondition2"]["S"].ToString() != "null") questChartInfos[i].QuestCondition2 = int.Parse(rowData["QuestCondition2"]["S"].ToString());
+                if (rowData["QuestCount"]["S"].ToString() != "null") questChartInfos[i].QuestCount = int.Parse(rowData["QuestCount"]["S"].ToString());
 
                 if (rowData["RewardType"]["S"].ToString() != "null")
                 {
@@ -130,6 +153,7 @@ public class QuestChartInfo
     public string QuestName;
     public string QuestCondition;
     public int QuestCondition2;
+    public int QuestCount;
     public RewardType[] RewardType = null;
     public int[] RewardId = null;
     public int[] RewardCount = null;

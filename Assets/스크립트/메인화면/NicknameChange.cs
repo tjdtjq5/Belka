@@ -52,7 +52,9 @@ public class NicknameChange : MonoBehaviour
             UserInfo.instance.nickname = nicknameInput.text;
 
             UserInfo.instance.PullUserCrystal(10);
-            UserInfo.instance.SaveUserCrystal(()=> { });
+            UserInfo.instance.SaveUserQuest(() => {
+                UserInfo.instance.SaveUserCrystal(() => { });
+            });
             UpperInfo.instance.CrystalSet();
         }
      

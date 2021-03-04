@@ -42,7 +42,9 @@ public class ChartManager : MonoBehaviour
                                                                             GachaBoxChart.instance.LoadChart(() => {
                                                                                 StageGroupChart.instance.LoadChart(() => {
                                                                                     QuestChart.instance.LoadChart(() => {
-                                                                                        loadCallback();
+                                                                                        AttendanceChart.instance.LoadChart(() => {
+                                                                                            loadCallback();
+                                                                                        });
                                                                                     });
                                                                                 });
                                                                             });

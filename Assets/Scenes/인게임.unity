@@ -64675,6 +64675,7 @@ MonoBehaviour:
   gachaBoxOpen: {fileID: 2624745397168707630}
   stageOpen: {fileID: 2624745396285339199}
   btnAlram: {fileID: 0}
+  questRewardResult: {fileID: 0}
   alram: {fileID: 0}
   tutorialBlackText: {fileID: 2624745396554404629}
   tutorialBlack: {fileID: 2624745396882293319}

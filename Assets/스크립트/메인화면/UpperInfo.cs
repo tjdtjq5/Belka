@@ -38,9 +38,7 @@ public class UpperInfo : MonoBehaviour
     {
         DateTime saveTime = UserInfo.instance.GetUserHeartInfo().reciveTime;
 
-        BackendReturnObject servertime = Backend.Utils.GetServerTime();
-        string time = servertime.GetReturnValuetoJSON()["utcTime"].ToString();
-        DateTime currentTime = DateTime.Parse(time);
+        DateTime currentTime = CurrentTime.instance.currentTime;
 
         TimeSpan subTime = currentTime.Subtract(saveTime);
 
@@ -66,9 +64,7 @@ public class UpperInfo : MonoBehaviour
     {
         DateTime saveTime = UserInfo.instance.GetUserHeartInfo().reciveTime;
 
-        BackendReturnObject servertime = Backend.Utils.GetServerTime();
-        string time = servertime.GetReturnValuetoJSON()["utcTime"].ToString();
-        DateTime currentTime = DateTime.Parse(time);
+        DateTime currentTime = CurrentTime.instance.currentTime;
 
         TimeSpan subTime = currentTime.Subtract(saveTime);
         int totalSecond = (int)subTime.TotalSeconds;

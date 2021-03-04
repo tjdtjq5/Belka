@@ -43,6 +43,7 @@ public class PopupManager : MonoBehaviour
     [SerializeField] GameObject gachaBoxOpen;
     [SerializeField] GameObject stageOpen;
     [SerializeField] GameObject btnAlram;
+    [SerializeField] GameObject questRewardResult;
     [SerializeField] GameObject alram;
     public GameObject tutorialBlackText;
     public GameObject tutorialBlack;
@@ -92,11 +93,20 @@ public class PopupManager : MonoBehaviour
                         SoundManager.instance.SfxPlay(sucessAudioSource);
                         callback(); shopPerchase.SetActive(false); blackPannel.SetActive(false);
 
+                        GameManager.instance.UserItemReward(rewardType, rewardItem, rewradCount);
+
                         UserInfo.instance.PullUserCrystal(needDia);
                         UpperInfo.instance.CrystalSet();
+
+
                         UserInfo.instance.SaveUserCrystal(() => {
-                            GameManager.instance.UserItemReward(rewardType, rewardItem, rewradCount);
+                            UserInfo.instance.SaveUserHeartInfo(() => {
+                                UserInfo.instance.SaveUserItemInfo(() => {
+                                    UserInfo.instance.SaveUserQuest(() => { });
+                                });
+                            });
                         });
+
                         PurchaseComplete(rewardItem, () => { });
                     }
                     else
@@ -685,6 +695,9 @@ public class PopupManager : MonoBehaviour
         DateTime currentTime = DateTime.Parse(time);
         int rankingId = RankingManager.instance.GetRankingID(currentTime.Year, currentTime.Month, currentTime.Day);
         string key = "RankingInGameBestScore" + rankingId;
+
+     
+
         BackendGameInfo.instance.GetPrivateContents("UserInfo", key, () => {
             float bestScore = float.Parse(BackendGameInfo.instance.serverDataList[0]);
             Debug.Log("내 개인 최고점수 가져오기 성공 : " + bestScore);
@@ -723,6 +736,27 @@ public class PopupManager : MonoBehaviour
                         blackPannel.SetActive(true);
                         rankingInGameResult.SetActive(true);
                         SoundManager.instance.SfxPlay(rankingInGameResult.GetComponent<AudioSource>());
+
+                        QuestChartInfo[] questChartInfoList = QuestChart.instance.questChartInfos;
+
+                        List<UserQuest> userQuests = UserInfo.instance.userQuests;
+                        for (int i = 0; i < userQuests.Count; i++)
+                        {
+                            QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(userQuests[i].ID);
+                            if (questChartInfo != null)
+                            {
+                                if (questChartInfo.QuestCondition == "RankingScore" && questChartInfo.QuestCondition2 >= rank)
+                                {
+                                    userQuests[i].clearTime = currentTime;
+                                    userQuests[i].clearCount++;
+                                    if (questChartInfo.QuestCount < userQuests[i].clearCount)
+                                    {
+                                        userQuests[i].clearCount = questChartInfo.QuestCount;
+                                    }
+                                }
+                            }
+                        }
+                        UserInfo.instance.SaveUserQuest(() => { });
                     }
                     else
                     {
@@ -768,6 +802,28 @@ public class PopupManager : MonoBehaviour
                         blackPannel.SetActive(true);
                         rankingInGameResult.SetActive(true);
                         SoundManager.instance.SfxPlay(rankingInGameResult.GetComponent<AudioSource>());
+
+
+                        QuestChartInfo[] questChartInfoList = QuestChart.instance.questChartInfos;
+
+                        List<UserQuest> userQuests = UserInfo.instance.userQuests;
+                        for (int i = 0; i < userQuests.Count; i++)
+                        {
+                            QuestChartInfo questChartInfo = QuestChart.instance.GetQuestChartInfo(userQuests[i].ID);
+                            if (questChartInfo != null)
+                            {
+                                if (questChartInfo.QuestCondition == "RankingScore" && questChartInfo.QuestCondition2 >= rank)
+                                {
+                                    userQuests[i].clearTime = currentTime;
+                                    userQuests[i].clearCount++;
+                                    if (questChartInfo.QuestCount < userQuests[i].clearCount)
+                                    {
+                                        userQuests[i].clearCount = questChartInfo.QuestCount;
+                                    }
+                                }
+                            }
+                        }
+                        UserInfo.instance.SaveUserQuest(() => { });
                     }
                 else
                 {
@@ -792,6 +848,9 @@ public class PopupManager : MonoBehaviour
 
         CharacterType characterType = UserInfo.instance.GetUserCharacterInfo().eqipCharacter;
         CharacterUpgradeChartInfo characterUpgradeChartInfo = CharacterUpgradeChart.instance.GetCharacterUpgradeChartInfo(characterType, UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)characterType]);
+
+        UserInfo.instance.ClearUserQuest("ExamCount", characterUpgradeChartInfo.CharacterUpgradeId);
+        
         int myNum = 0;
         myNum = UserInfo.instance.GetUserItemInfo(characterUpgradeChartInfo.UpgradeItemId).numberOfItem;
         int needNum = characterUpgradeChartInfo.UpgradeItemCount;
@@ -799,6 +858,7 @@ public class PopupManager : MonoBehaviour
         UserInfo.instance.SaveUserItemInfo(() => {
             UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)characterType] = (GradeType)((int)UserInfo.instance.GetUserCharacterInfo().characterGrade[(int)characterType] + 1);
             UserInfo.instance.SaveUserCharacterInfo(() => {
+                UserInfo.instance.SaveUserQuest(() => { });
                 characterUpgradeInGameResult.transform.Find("Home").GetComponent<Button>().onClick.AddListener(() => { SceneManager.LoadScene("메인화면"); });
             });
         });
@@ -1094,11 +1154,13 @@ public class PopupManager : MonoBehaviour
                 Alram("Error_01");
                 return;
             }
-            UserInfo.instance.GetUserHeartInfo().numberOfHeart--;
+            UserInfo.instance.PullUserHeart(1);
             UserInfo.instance.SaveUserHeartInfo(() => {
-                stageOpen.SetActive(false);
-                blackPannel.SetActive(false);
-                GameManager.instance.StoryGameStart(stageId);
+                UserInfo.instance.SaveUserQuest(() => {
+                    stageOpen.SetActive(false);
+                    blackPannel.SetActive(false);
+                    GameManager.instance.StoryGameStart(stageId);
+                });
             });
         });
     }
@@ -1215,4 +1277,26 @@ public class PopupManager : MonoBehaviour
             yield return waitTime;
         }
     }
+    public void QuestRewardResult(RewardType[] rewardTypes, int[] IDs, int[] countList)
+    {
+        Debug.Log("bb");
+        int maxItem = 3;
+        if (rewardTypes.Length > maxItem || IDs.Length > maxItem || countList.Length > maxItem)
+        {
+            Debug.Log("아이템 보상 종류가 너무 많습니다");
+            return; 
+        }
+        Debug.Log("cc");
+        blackPannel.SetActive(true);
+        questRewardResult.SetActive(true);
+
+        questRewardResult.GetComponent<QuestRewardResult>().Open(rewardTypes, IDs, countList);
+
+        questRewardResult.transform.Find("Ok").GetComponent<Button>().onClick.RemoveAllListeners();
+        questRewardResult.transform.Find("Ok").GetComponent<Button>().onClick.AddListener(() => {
+            blackPannel.SetActive(false);
+            questRewardResult.SetActive(false);
+        });
+    }
+
 }

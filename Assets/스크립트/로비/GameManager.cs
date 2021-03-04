@@ -50,14 +50,17 @@ public class GameManager : MonoBehaviour
         int dialogueID = StageChart.instance.GetStageChartInfo(stageID).PrologueId;
         this.dialogueID = dialogueID;
 
-        if (dialogueID != 0)
-        {
-            PopupManager.instance.Dialogue(dialogueID, () => { SceneManager.LoadScene("인게임"); });
-        }
-        else
-        {
-            SceneManager.LoadScene("인게임");
-        }
+        UserInfo.instance.ClearUserQuest("PlayCount", stageID);
+        UserInfo.instance.SaveUserQuest(() => {
+            if (dialogueID != 0)
+            {
+                PopupManager.instance.Dialogue(dialogueID, () => { SceneManager.LoadScene("인게임"); });
+            }
+            else
+            {
+                SceneManager.LoadScene("인게임");
+            }
+        });
 
         /*
         if (PlayerPrefs.HasKey(dialogue + dialogueID))
@@ -70,12 +73,15 @@ public class GameManager : MonoBehaviour
     }
     public void RankingGameStart(int recipeID, int numberOfFood, int limitTime, CharacterType characterType)
     {
-        IngameType = IngameType.랭킹;
-        UserInfo.instance.GetUserCharacterInfo().eqipCharacter = characterType;
-        this.recipeId = recipeID;
-        this.numberOfFood = numberOfFood;
-        this.limitTime = limitTime;
-        SceneManager.LoadScene("인게임");
+        UserInfo.instance.ClearUserQuest("RankingCount");
+        UserInfo.instance.SaveUserQuest(() => {
+            IngameType = IngameType.랭킹;
+            UserInfo.instance.GetUserCharacterInfo().eqipCharacter = characterType;
+            this.recipeId = recipeID;
+            this.numberOfFood = numberOfFood;
+            this.limitTime = limitTime;
+            SceneManager.LoadScene("인게임");
+        });
     }
 
     public void CharacterUpgradeGameStart(int stageID, CharacterType characterType)
@@ -99,17 +105,14 @@ public class GameManager : MonoBehaviour
                 {
                     case 1:
                         UserInfo.instance.PutUserHeart(rewardCount);
-                        UserInfo.instance.SaveUserHeartInfo(() => { });
                         break;
                     case 2:
                         UserInfo.instance.PutUserCrystal(rewardCount);
-                        UserInfo.instance.SaveUserCrystal(() => { });
                         break;
                 }
                 break;
             case RewardType.Item:
                 UserInfo.instance.PutUserItem(rewardItem, rewardCount);
-                UserInfo.instance.SaveUserItemInfo(() => { });
                 break;
         }
     }

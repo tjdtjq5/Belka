@@ -3,17 +3,31 @@ using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 using LitJson;
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Facebook.Unity;
+using System.Collections.Generic;
 
 public class BackendInitial : MonoBehaviour
 {
     public LobbyLoding lobbyLoding;
-    public GameObject[] loginBtn;
+    public GameObject guestLoginBtn;
+    public GameObject googleLoginBtn;
+    public GameObject facebookLoginBtn;
+
     void Awake()
     {
+        // IsInitialized : 초기화가 됐는지 확인하는 함수
+        if (!FB.IsInitialized)
+        {
+            //초기화가 되지 않았다면 초기화를 진행(콜백,콜백)
+            FB.Init(InitCallback, OnHideUnity);
+        }
+        else
+        {
+            //초기화가 진행됐다면 개발자페이지의 앱을 활성화
+            FB.ActivateApp();
+        }
+
         Backend.Initialize(HandleBackendCallback);
     }
 
@@ -22,6 +36,8 @@ public class BackendInitial : MonoBehaviour
         if(Backend.IsInitialized)
         {
             Debug.Log("뒤끝SDK 초기화 완료");
+
+          
 
             if (PlayerPrefs.HasKey("login"))
             {
@@ -33,21 +49,22 @@ public class BackendInitial : MonoBehaviour
                     case "Google":
                         OnClickGoogle();
                         break;
+                    case "Facebook":
+                        OnClickFacebook();
+                        break;
                     default:
-                        for (int i = 0; i < loginBtn.Length; i++)
-                        {
-                            loginBtn[i].gameObject.SetActive(true);
-                        }
+                        guestLoginBtn.SetActive(true);
+                        googleLoginBtn.SetActive(false);
+                        facebookLoginBtn.SetActive(false);
                         break;
                 }
             }
             else
             {
                 // 버튼을 눌러서 로그인 
-                for (int i = 0; i < loginBtn.Length; i++)
-                {
-                    loginBtn[i].gameObject.SetActive(true);
-                }
+                guestLoginBtn.SetActive(true);
+                facebookLoginBtn.SetActive(true);
+                googleLoginBtn.SetActive(true);
             }
         }
         // 실패
@@ -85,6 +102,20 @@ public class BackendInitial : MonoBehaviour
         PlayGamesPlatform.Activate();
         GoogleAuth(() => { lobbyLoding.Loading(); });
     }
+    public void OnClickFacebook()
+    {
+        //잘 모르겠다. 아마 권한인것같다.
+        var Perms = new List<string>() { "public_profile" };
+
+        //로그인 됐는지 확인하는 함수
+        if (!FB.IsLoggedIn)
+        {
+            //로그인 안됐다면 로그인하는 함수(권한,콜백)
+            FB.LogInWithReadPermissions(Perms, FacebookCallback);
+        }
+    }
+
+
     [System.Obsolete]
     public void CustumSignUp()
     {
@@ -418,6 +449,83 @@ public class BackendInitial : MonoBehaviour
                     // 이미 가입되어 있는 경우
                     Debug.Log("Duplicated federationId, 중복된 federationId 입니다");
                     break;
+            }
+        }
+    }
+
+
+    // 페이스북 
+    private void InitCallback()
+    {
+        //초기화가 됐다면
+        if (FB.IsInitialized)
+            //개발자페이지의 앱활성화
+            FB.ActivateApp();
+        else
+            Debug.Log("Failed Init");
+    }
+
+    private void OnHideUnity(bool isGameShown)
+    {
+        if (!isGameShown)
+        {
+            // 앱을 일시 정지 시킨다.
+            Time.timeScale = 0;
+        }
+        else
+        {
+            // 앱을 다시 플레이 시킨다.
+            Time.timeScale = 1;
+        }
+    }
+
+    void FBLogin()
+    {
+        var Perms = new List<string>() { "public_profile" };
+        FB.LogInWithReadPermissions(Perms, FacebookCallback);
+    }
+
+    void FacebookCallback(ILoginResult result)
+    {
+        Debug.Log("페이스북 로그인 성공");
+        // 페이스북에 로그인 성공
+
+        if (result.Cancelled)
+        {
+            Debug.Log("User cancelled login");
+        }
+        else
+        {
+            // 토큰 정보 참조
+            var aToken = Facebook.Unity.AccessToken.CurrentAccessToken;
+
+            // 토큰을 string 으로 변환
+            string facebookToken = aToken.TokenString;
+
+            // 뒤끝 서버에 획득한 페이스북 토큰으로 가입요청
+            // 동기 방법으로 가입 요청
+            BackendReturnObject BRO = Backend.BMember.AuthorizeFederation(facebookToken, FederationType.Facebook, "페이스북 로그인");
+
+            if (BRO.IsSuccess())
+            {
+                Debug.Log("페북 토큰으로 뒤끝서버 로그인 성공 - 동기 방식-");
+            }
+            else
+            {
+                switch (BRO.GetStatusCode())
+                {
+                    case "200":
+                        Debug.Log("이미 회원가입된 회원");
+                        break;
+
+                    case "403":
+                        Debug.Log("차단된 사용자 입니다. 차단 사유 : " + BRO.GetErrorCode());
+                        break;
+
+                    default:
+                        Debug.Log("서버 공통 에러 발생" + BRO.GetMessage());
+                        break;
+                }
             }
         }
     }
